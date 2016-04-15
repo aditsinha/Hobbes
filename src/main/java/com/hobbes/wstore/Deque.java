@@ -23,6 +23,23 @@ public class Deque {
 		this.size = 0;
 	}
 
+	public void merge(Node n1, Node n2) {
+		if(n1.beginByte <= n.beginByte & n1.endByte >= n.endByte) {
+			/* write */
+			return;
+		} else if(n1.beginByte <= n2.beginByte && n1.endByte <= n2.endByte) {
+			n1.endByte = n2.endByte;
+			/* write */
+		} else if(n1.beginByte >= n2.beginByte && n1.endByte >= n2.endByte) {
+			n1.beginByte = n2.beginByte;
+			/* write */
+		} else if(n1.beginByte >= n.beginByte && n1.endByte <= n2.endByte) {
+			n1.beginByte = n2.beginByte;
+			n1.endByte = n2.endByte;
+			/* write */
+		}
+	}
+
 	public void add(Node n) {
 		Node curr = head;
 		while(curr.next != null && curr.beginBlock < n.beginBlock) {
