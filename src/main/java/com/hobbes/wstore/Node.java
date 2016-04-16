@@ -5,15 +5,11 @@ package com.hobbes.wstore;
  *
  */
 public class Node {
-	int beginBlock;
-	int beginByte;
-	int endBlock;
-	int endByte;
+	ByteArrayDataRange range;
 	Node next;
 
-	public Node(int beginBlock, int beginByte, int endBlock, int endByte) {
-		this.beginBlock = beginBlock;
-		
+	public Node(ByteArrayDataRange range) {
+		this.range = range;
 		this.next = null;
 	}
 

@@ -1,24 +1,24 @@
 package com.hobbes.wstore;
 
-/**
- * Hello world!
- *
- */
 public class FileByteChanges {
-    public static void main( String[] args ) {
-        System.out.println( "Hello World!" );
-    }
 
-	public static class Node {
-		int blockNumber;
-		int byteNumber;
+	private FileByteChangesTable t;
+
+	public FileByteChanges() {
+		FileByteChangesTable t = new FileByteChangesTable();
 	}
 
-	public N
+	public Deque read(String filename) {
+		return t.retrieve(filename);
+	}
 
-	public static class Deque {
-		int blockNumber;
-		int byteNumber;
-
-
+	public void write(String filename, ByteArrayDataRange b) {
+		Deque d;
+		if(!t.check(filename)) {
+			d = t.insert(filename);
+		} else {
+			d = t.retrieve(filename);
+		}
+		d.add(b);
+	}
 }
