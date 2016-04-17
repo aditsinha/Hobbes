@@ -22,8 +22,20 @@ abstract class DataRange {
 	return logicalEndPosition;
     }
 
+	public void setLogicalStartPosition(long logicalStartPosition) {
+		this.logicalStartPosition = logicalStartPosition;
+	}
+
+	public void setLogicalEndPosition(long logicalEndPosition) {
+		this.logicalEndPosition = logicalEndPosition;
+	}
+
     /**
      * Copy this data range into buf, starting at buf[pos]
      */
-    public abstract int getData(byte[] buf, int pos);
+    public abstract long getData(byte[] buf, int pos);
+
+	
+
+	
 }
