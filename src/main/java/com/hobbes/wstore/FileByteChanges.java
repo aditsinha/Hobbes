@@ -8,12 +8,12 @@ public class FileByteChanges {
 		FileByteChangesTable t = new FileByteChangesTable();
 	}
 
-	public Deque read(String filename) {
+	public FileByteChangesDeque read(String filename) {
 		return t.retrieve(filename);
 	}
 
 	public void write(String filename, ByteArrayDataRange b) {
-		Deque d;
+		FileByteChangesDeque d;
 		if(!t.check(filename)) {
 			d = t.insert(filename);
 		} else {

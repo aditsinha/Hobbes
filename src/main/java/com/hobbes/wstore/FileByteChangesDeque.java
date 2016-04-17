@@ -1,7 +1,7 @@
 package com.hobbes.wstore;
 import java.util.*;
 
-public class Deque  {
+public class FileByteChangesDeque  {
 	public static int safeLongToInt(long l) {
 		if (l < Integer.MIN_VALUE || l > Integer.MAX_VALUE) {
 		    throw new IllegalArgumentException
@@ -12,7 +12,7 @@ public class Deque  {
 
 	ArrayList<ByteArrayDataRange> deque;
 
-	public Deque() {
+	public FileByteChangesDeque() {
 		this.deque = new ArrayList<ByteArrayDataRange>();
 	}
 
