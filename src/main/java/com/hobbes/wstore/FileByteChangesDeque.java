@@ -1,5 +1,6 @@
 package com.hobbes.wstore;
 import java.util.*;
+import java.io.*;
 
 public class FileByteChangesDeque  {
 	public static int safeLongToInt(long l) {
@@ -10,10 +11,16 @@ public class FileByteChangesDeque  {
 		return (int) l;
 	}
 
-	ArrayList<ByteArrayDataRange> deque;
+	private ArrayList<ByteArrayDataRange> deque;
+	private Path dataFile;
 
-	public FileByteChangesDeque() {
+	public FileByteChangesDeque(Path dataFile) {
+		this.dataFile = dataFile;
 		this.deque = new ArrayList<ByteArrayDataRange>();
+	}
+
+	public String getFilename() {
+		return filename;
 	}
 
 
@@ -120,5 +127,9 @@ public class FileByteChangesDeque  {
 
 	public void clearDeque() {
 		deque = new ArrayList<ByteArrayDataRange>();
+	}
+
+	public boolean isEmpty() {
+		return deque.size() == 0;
 	}
 }
