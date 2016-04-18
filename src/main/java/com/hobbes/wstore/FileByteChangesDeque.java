@@ -2,6 +2,8 @@ package com.hobbes.wstore;
 import java.util.*;
 import java.io.*;
 
+import org.apache.hadoop.fs.*;
+
 public class FileByteChangesDeque  {
 	public static int safeLongToInt(long l) {
 		if (l < Integer.MIN_VALUE || l > Integer.MAX_VALUE) {
@@ -19,8 +21,8 @@ public class FileByteChangesDeque  {
 		this.deque = new ArrayList<ByteArrayDataRange>();
 	}
 
-	public String getFilename() {
-		return filename;
+	public Path getPath() {
+		return dataFile;
 	}
 
 

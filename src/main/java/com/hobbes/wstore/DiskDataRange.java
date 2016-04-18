@@ -8,7 +8,7 @@ class DiskDataRange extends DataRange {
     }
 
     @Override
-    public int getData(byte[] buf, int pos) {
+    public long getData(byte[] buf, int pos) {
 	// Do nothing for now
 	return 0;
     }

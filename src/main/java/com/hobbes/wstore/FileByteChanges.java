@@ -2,6 +2,7 @@ package com.hobbes.wstore;
 
 import java.util.*;
 import java.io.*;
+import java.nio.ByteBuffer;
 
 import org.apache.hadoop.fs.*;
 
@@ -19,7 +20,7 @@ public class FileByteChanges {
 		this.blockSize = status.getBlockSize();
 		this.logOut = fileSystem.append(logFile);
 		
-		FileByteChangesTable d = new FileByteChangesDeque(dataFile);
+		FileByteChangesDeque d = new FileByteChangesDeque(dataFile);
 		
 		FSDataInputStream logIn = fileSystem.open(logFile);
 		readLog(logIn);
@@ -30,12 +31,12 @@ public class FileByteChanges {
 		return d;
 	}
 
-	public void readLog(DataInputStream logIn) {
+	public void readLog(DataInputStream logIn) throws IOException {
 		try {
 			while(true) {
 				long logicalStartPosition = logIn.readLong();
 				long logicalEndPosition = logIn.readLong();
-				long length = logicalStartPosition - logicalEndPosition;
+				int length = (int)(logicalStartPosition - logicalEndPosition);
 				byte[] backing = new byte[length];
 				logIn.read(backing, 0, length);
 				ByteArrayDataRange b = new ByteArrayDataRange(logicalStartPosition, logicalEndPosition, backing);
@@ -49,14 +50,15 @@ public class FileByteChanges {
 	}
 
 	
-	public void writeLog() {
-		ByteBuffer b = ByteBuffer.allocate((int)bockSize);
+	public void writeLog() throws IOException {
+		ByteBuffer b = ByteBuffer.allocate((int)blockSize);
 		byte[] flush;
+		ArrayList<ByteArrayDataRange> deque = d.getDeque();
 
-		for(int i=0; i < t.size(); i++) {
-			b.putLong(b.get(i).getLogicalStartPosition());
-			b.putLong(b.get(i).getLogicalEndPosition());
-			b.put(b.get(i).backing);
+		for(int i=0; i < deque.size(); i++) {
+			b.putLong(deque.get(i).getLogicalStartPosition());
+			b.putLong(deque.get(i).getLogicalEndPosition());
+			b.put(deque.get(i).backing);
 			b.putChar(':');
 		}
 

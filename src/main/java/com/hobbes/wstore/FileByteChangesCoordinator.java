@@ -1,6 +1,6 @@
 package com.hobbes.wstore;
 import java.util.*;
-import java.util.*;
+import java.io.*;
 
 import org.apache.hadoop.fs.*;
 
@@ -20,9 +20,9 @@ public class FileByteChangesCoordinator {
 		currLeast = currIndex = 0;
 	}
 
-	public FileByteChanges insert(Path dataFile, Path logFile) {
-		FileByteChanges fbc = new FileByteChangesDeque(fileSystem, dataFile, logFile);
-		if(t.size() == size) {
+	public FileByteChanges insert(Path dataFile, Path logFile) throws IOException {
+		FileByteChanges fbc = new FileByteChanges(fileSystem, dataFile, logFile);
+		if(table.size() == size) {
 			evict();
 		}
 		table.put(dataFile, fbc);
@@ -35,7 +35,7 @@ public class FileByteChangesCoordinator {
 		return (table.containsKey(dataFile));
 	}
 	
-	public FileByteChangesDeque read(Path dataFile, Path logFile) {
+	public FileByteChangesDeque read(Path dataFile, Path logFile) throws IOException {
 		if(!check(dataFile)) {
 			insert(dataFile, logFile);
 		}
@@ -43,7 +43,7 @@ public class FileByteChangesCoordinator {
 		return ret;
 	}
 	
-	public void write(Path dataFile, Path logFile, ByteArrayDataRange b) {
+	public void write(Path dataFile, Path logFile, ByteArrayDataRange b) throws IOException {
 		FileByteChangesDeque d = read(dataFile, logFile);
 		d.add(b);
 	}
@@ -54,12 +54,13 @@ public class FileByteChangesCoordinator {
 		FileByteChanges ret = table.remove(least);
 		ret.writeLog();
 		currLeast = (currLeast + 1) % size;
+		return ret;
 	}
 
 	public void tableFlush() {
 		for(Map.Entry<Path, FileByteChanges> entry : table.entrySet()) {
 			entry.getValue().writeLog();
-			table.remove(entry.getKey())
+			table.remove(entry.getKey());
 		}
 	
 		for(int i=0; i < size; i++) {
