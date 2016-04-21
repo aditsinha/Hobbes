@@ -23,7 +23,8 @@ public class FileByteChangesCoordinator {
 	public FileByteChanges insert(Path dataFile, Path logFile) throws IOException {
 		FileByteChanges fbc = new FileByteChanges(fileSystem, dataFile, logFile);
 		if(table.size() == size) {
-			evict();
+			FileByteChanges ev = evict();
+			ev.writeLog();
 		}
 		table.put(dataFile, fbc);
 		lru[currIndex] = dataFile;
@@ -48,7 +49,7 @@ public class FileByteChangesCoordinator {
 		d.add(b);
 	}
 
-	public FileByteChanges evict() {
+	public FileByteChanges evict()  throws IOException {
 		Path least = lru[currLeast];
 		lru[currLeast] = null;
 		FileByteChanges ret = table.remove(least);
@@ -57,7 +58,7 @@ public class FileByteChangesCoordinator {
 		return ret;
 	}
 
-	public void tableFlush() {
+	public void tableFlush() throws IOException {
 		for(Map.Entry<Path, FileByteChanges> entry : table.entrySet()) {
 			entry.getValue().writeLog();
 			table.remove(entry.getKey());

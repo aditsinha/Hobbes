@@ -98,24 +98,45 @@ public class FileByteChangesDeque  {
 		}
 	}
 
-	public void add(ByteArrayDataRange b) {
+
+	/* Return the index in the deque that has the largest logicalStartPostiion < start
+	 * Return -1 if deque is empty
+	 */
+	public int search(long start) {
 		int size = deque.size();
 		
 		if(size == 0) {
-			deque.add(b);
-			return;
+			return -1;
 		}
 
-		long key = b.getLogicalStartPosition();
 		int low, mid, high;
 		low = mid = 0;
         high = size-1;
 
-        while (low <= high) {
+		while (low <= high) {
             mid = low + (high - low) / 2;
-            if      (key < deque.get(mid).getLogicalStartPosition()) high = mid - 1;
-            else if (key > deque.get(mid).getLogicalStartPosition()) low = mid + 1;
+            if      (start < deque.get(mid).getLogicalStartPosition()) high = mid - 1;
+            else if (start > deque.get(mid).getLogicalStartPosition()) {
+				low = mid;
+				mid++;
+				while(mid < size && deque.get(mid).getLogicalStartPosition() < start) {
+					low++;
+					mid++;
+				}
+				return low;
+			}
+			else return mid;
         }
+
+		return mid;
+	}
+
+	public void add(ByteArrayDataRange b) {
+		int mid = search(b.getLogicalStartPosition());
+		if(mid  == -1) {
+			deque.add(b);
+			return;
+		}
 
 		ByteArrayDataRange curr = deque.get(mid);
 		if (curr.getLogicalStartPosition() > b.getLogicalEndPosition()) {
