@@ -54,7 +54,7 @@ class FileBlockChanges {
 	
 	long currentBlockStartOffset = blockOffset;
 
-	DiskLocation rangeStart = new DiskLocation(physicalBlock, blockOffset);
+	DiskLocation rangeStart = new DiskLocation(physicalBlock, blockOffset, dataBlockSize);
 
 	long bytesRemaining = logicalEnd - logicalStart;
 	long rangeStartLogical = logicalStart;
@@ -63,7 +63,7 @@ class FileBlockChanges {
 	    if (bytesRemaining <= dataBlockSize - currentBlockStartOffset) {
 		// can finish with this block
 		DiskLocation rangeEnd =
-		    new DiskLocation(physicalBlock, currentBlockStartOffset + bytesRemaining);		
+		    new DiskLocation(physicalBlock, currentBlockStartOffset + bytesRemaining, dataBlockSize);
 		diskRanges.add(new DiskDataRange(rangeStartLogical, logicalEnd,
 						 rangeStart, rangeEnd));
 		bytesRemaining = 0;
@@ -76,11 +76,11 @@ class FileBlockChanges {
 		long nextPhysicalBlock = getPhysicalBlockNumber(logicalBlock);
 		if (nextPhysicalBlock != physicalBlock + 1) {
 		    // we can't include the next block in the same range, so terminate this
-		    DiskLocation rangeEnd = new DiskLocation(physicalBlock, dataBlockSize);
+		    DiskLocation rangeEnd = new DiskLocation(physicalBlock, dataBlockSize, dataBlockSize);
 		    long rangeEndLogical = (logicalEnd - logicalStart) - bytesRemaining;
 		    diskRanges.add(new DiskDataRange(rangeStartLogical, rangeEndLogical,
 						     rangeStart, rangeEnd));
-		    rangeStart = new DiskLocation(nextPhysicalBlock, 0);
+		    rangeStart = new DiskLocation(nextPhysicalBlock, 0, dataBlockSize);
 		    rangeStartLogical = rangeEndLogical;
 		}
 		

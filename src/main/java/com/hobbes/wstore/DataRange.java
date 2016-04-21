@@ -38,4 +38,6 @@ abstract class DataRange {
     public long size() {
 	return logicalEndPosition - logicalStartPosition;
     }
+
+    public abstract DataRange getSubrange(long logicalStart, long logicalEnd);
 }
