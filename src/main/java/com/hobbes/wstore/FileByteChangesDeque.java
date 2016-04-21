@@ -5,13 +5,6 @@ import java.io.*;
 import org.apache.hadoop.fs.*;
 
 public class FileByteChangesDeque  {
-	public static int safeLongToInt(long l) {
-		if (l < Integer.MIN_VALUE || l > Integer.MAX_VALUE) {
-		    throw new IllegalArgumentException
-		        (l + " cannot be cast to int without changing its value.");
-		}
-		return (int) l;
-	}
 
 	private ArrayList<ByteArrayDataRange> deque;
 	private Path dataFile;
@@ -25,6 +18,12 @@ public class FileByteChangesDeque  {
 		return dataFile;
 	}
 
+	public void print() {
+		for(int i=0; i < deque.size(); i++) {
+			String data = new String(deque.get(i).backing);
+			System.out.println("POSITION " + Integer.toString(i) + " - START: " + Long.toString(deque.get(i).getLogicalStartPosition()) + ", END: " + Long.toString(deque.get(i).getLogicalEndPosition()) + ", BYTES: " + data);
+		}
+	}
 
 	public void merge(ByteArrayDataRange b1, ByteArrayDataRange b2) {
 		long b1Start = b1.getLogicalStartPosition();
@@ -38,19 +37,19 @@ public class FileByteChangesDeque  {
 					   b2 is        [===========] */
 		if(b1Start <= b2Start  &&
 		   b1End >= b2End) {
-		   	byte[] buf = new byte[safeLongToInt(b1.getLogicalEndPosition() - b1.getLogicalStartPosition())];
+		   	byte[] buf = new byte[(int)(b1.getLogicalEndPosition() - b1.getLogicalStartPosition())];
 
-			length = safeLongToInt(b2Start-b1Start);
+			length = (int)(b2Start-b1Start);
 
 			System.arraycopy(b1.backing, srcPos, buf, destPos, length);
 
-			destPos = safeLongToInt(b2Start-b1Start);
+			destPos = (int)(b2Start-b1Start);
 			length = b2.backing.length;
 
 			System.arraycopy(b2.backing, srcPos, buf, destPos, length);
 			
-			srcPos = destPos = safeLongToInt(b2End-b1Start);
-			length = safeLongToInt(b1End-b2End);
+			srcPos = destPos = (int)(b2End-b1Start);
+			length = (int)(b1End-b2End);
 
 			System.arraycopy(b1.backing, srcPos, buf, destPos, length);
 			b1.setBacking(buf);
@@ -60,13 +59,13 @@ public class FileByteChangesDeque  {
 		} else if(b1Start <= b2Start && 
 				  b1End <= b2End) {
 			b1.setLogicalEndPosition(b2End);
-			byte[] buf = new byte[safeLongToInt(b1.getLogicalEndPosition() - b1.getLogicalStartPosition())];
+			byte[] buf = new byte[(int)(b1.getLogicalEndPosition() - b1.getLogicalStartPosition())];
 
-			length = safeLongToInt(b2Start-b1Start);
+			length = (int)(b2Start-b1Start);
 
 			System.arraycopy(b1.backing, srcPos, buf, destPos, length);
 
-			destPos = safeLongToInt(b2Start-b1Start);
+			destPos = (int)(b2Start-b1Start);
 			length = b2.backing.length;
 
 			System.arraycopy(b2.backing, srcPos, buf, destPos, length);
@@ -77,15 +76,15 @@ public class FileByteChangesDeque  {
 		} else if(b1Start >= b2Start && 
 				  b1End >= b2End) {
 			b1.setLogicalStartPosition(b2Start);
-			byte[] buf = new byte[safeLongToInt(b1.getLogicalEndPosition() - b1.getLogicalStartPosition())];
+			byte[] buf = new byte[(int)(b1.getLogicalEndPosition() - b1.getLogicalStartPosition())];
 
 			length = b2.backing.length;
 
 			System.arraycopy(b2.backing, srcPos, buf, destPos, length);
 
-			srcPos = b2.backing.length;
-			destPos = safeLongToInt(b2End-b1Start);
-			length = safeLongToInt(b1End-b2End);
+			destPos = b2.backing.length;
+			srcPos = (int)(b2End-b1Start);
+			length = (int)(b1End-b2End);
 
 			System.arraycopy(b1.backing, srcPos, buf, destPos, length);
 			b1.setBacking(buf);
@@ -101,6 +100,11 @@ public class FileByteChangesDeque  {
 
 	public void add(ByteArrayDataRange b) {
 		int size = deque.size();
+		
+		if(size == 0) {
+			deque.add(b);
+			return;
+		}
 
 		long key = b.getLogicalStartPosition();
 		int low, mid, high;
@@ -120,6 +124,20 @@ public class FileByteChangesDeque  {
 			deque.add(mid+1, b);
 		} else {
 			merge(curr, b);
+			ByteArrayDataRange prev, next;
+
+			prev = mid-1 > 0 ? deque.remove(mid-1) : null;
+			while(prev != null && curr.getLogicalStartPosition() >= prev.getLogicalEndPosition()) {
+				merge(prev, curr);
+				mid--;
+				prev = mid-1 > 0 ? deque.remove(mid-1) : null;
+			}
+
+			next = mid+1 < deque.size() ? deque.remove(mid+1) : null;
+			while(next != null && curr.getLogicalEndPosition() >= next.getLogicalStartPosition()) {
+				merge(next, curr);
+				next = mid+1 < deque.size() ? deque.remove(mid+1) : null;
+			}
 		}
 	}
 
@@ -133,5 +151,33 @@ public class FileByteChangesDeque  {
 
 	public boolean isEmpty() {
 		return deque.size() == 0;
+	}
+
+
+
+	public static void main(String[] args) {
+		FileByteChangesDeque d = new FileByteChangesDeque(null);
+
+		String s1 = "hello";
+		byte[] backing1 = s1.getBytes();
+		int size1 = s1.length();
+
+		String s2 = "foo";
+		byte[] backing2 = s2.getBytes();
+		int size2 = s2.length();
+
+		String s3 = "anteater";
+		byte[] backing3 = s3.getBytes();
+		int size3 = s3.length();
+
+		ByteArrayDataRange b1 = new ByteArrayDataRange(0, size1, backing1);
+		ByteArrayDataRange b2 = new ByteArrayDataRange(size1+1, size1+1+size2, backing2);
+		ByteArrayDataRange b3 = new ByteArrayDataRange(100, 100+size3, backing3);
+		
+		d.add(b1);
+		d.add(b2);
+		d.add(b3);
+
+		d.print();
 	}
 }
