@@ -38,14 +38,10 @@ class FileBlockChanges {
 
     private void readLogFile(DataInputStream logIn) throws IOException {
 	// we want to read the log in order to create the block map.
-	try {
-	    while (true) {
-		long logical = logIn.readLong();
-		long physical = logIn.readLong();
-		blockMap.put(logical, physical);
-	    }
-	} catch (EOFException e1) {
-	    // this is good. means that we reached the end of the stream
+	while (logIn.available() > 0) {
+	    long logical = logIn.readLong();
+	    long physical = logIn.readLong();
+	    blockMap.put(logical, physical);
 	}
     }
     
@@ -59,7 +55,6 @@ class FileBlockChanges {
 	long currentBlockStartOffset = blockOffset;
 
 	DiskLocation rangeStart = new DiskLocation(physicalBlock, blockOffset);
-
 
 	long bytesRemaining = logicalEnd - logicalStart;
 	long rangeStartLogical = logicalStart;
