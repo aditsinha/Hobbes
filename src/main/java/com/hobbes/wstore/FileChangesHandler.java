@@ -7,6 +7,7 @@ import org.apache.hadoop.fs.*;
     
 public class FileChangesHandler {
 
+    private Path dataPath;
     private FileByteChanges byteChanges;
     private FileBlockChanges blockChanges;
     
@@ -14,6 +15,10 @@ public class FileChangesHandler {
     public FileChangesHandler(FileSystem fileSystem, Path dataPath, Path blockLogPath, Path byteLogPath) {
 	byteChanges = new FileByteChanges(fileSystem, dataPath, byteLogPath);
 	blockChanges = new FileBlockChanges(fileSystem, dataPath, blockLogPath);
+    }
+
+    public Path getDataPath() {
+	return dataPath;
     }
 
     public void write(List<ByteArrayDataRange> changes) {
