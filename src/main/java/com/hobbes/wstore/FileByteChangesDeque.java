@@ -109,26 +109,21 @@ public class FileByteChangesDeque  {
 			return -1;
 		}
 
-		int low, mid, high;
-		low = mid = 0;
+		int low, mid, high, ret;
+		low = mid = ret = 0;
         high = size-1;
 
 		while (low <= high) {
             mid = low + (high - low) / 2;
             if      (start < deque.get(mid).getLogicalStartPosition()) high = mid - 1;
             else if (start > deque.get(mid).getLogicalStartPosition()) {
-				low = mid;
-				mid++;
-				while(mid < size && deque.get(mid).getLogicalStartPosition() < start) {
-					low++;
-					mid++;
-				}
-				return low;
+				ret = mid;
+				low = mid+1;
 			}
 			else return mid;
         }
 
-		return mid;
+		return ret;
 	}
 
 	public void add(ByteArrayDataRange b) {
@@ -142,22 +137,34 @@ public class FileByteChangesDeque  {
 		if (curr.getLogicalStartPosition() > b.getLogicalEndPosition()) {
 			deque.add(mid, b);
 		} else if(curr.getLogicalEndPosition() < b.getLogicalStartPosition()) {
-			deque.add(mid+1, b);
+			if(mid+1 >= deque.size() || deque.get(mid+1).getLogicalStartPosition() > b.getLogicalEndPosition()) {
+				deque.add(mid+1,b);
+			} else {
+				curr = deque.get(mid+1);
+				merge(curr, b);
+				mid++;
+				ByteArrayDataRange next;
+				next = mid+1 < deque.size() && curr.getLogicalEndPosition() >= deque.get(mid+1).getLogicalStartPosition() ? deque.remove(mid+1) : null;
+				while(next != null) {
+					merge(next, curr);
+					next = mid+1 < deque.size() && curr.getLogicalEndPosition() >= deque.get(mid+1).getLogicalStartPosition() ? deque.remove(mid+1) : null;
+				}
+			}
 		} else {
 			merge(curr, b);
 			ByteArrayDataRange prev, next;
 
-			prev = mid-1 > 0 ? deque.remove(mid-1) : null;
-			while(prev != null && curr.getLogicalStartPosition() >= prev.getLogicalEndPosition()) {
+			prev = mid-1 > 0 && curr.getLogicalStartPosition() <= deque.get(mid-1).getLogicalEndPosition() ? deque.remove(mid-1) : null;
+			while(prev != null) {
 				merge(prev, curr);
 				mid--;
-				prev = mid-1 > 0 ? deque.remove(mid-1) : null;
+				prev = mid-1 > 0 && curr.getLogicalStartPosition() <= deque.get(mid-1).getLogicalEndPosition() ? deque.remove(mid-1) : null;
 			}
 
-			next = mid+1 < deque.size() ? deque.remove(mid+1) : null;
-			while(next != null && curr.getLogicalEndPosition() >= next.getLogicalStartPosition()) {
+			next = mid+1 < deque.size() && curr.getLogicalEndPosition() >= deque.get(mid+1).getLogicalStartPosition() ? deque.remove(mid+1) : null;
+			while(next != null) {
 				merge(next, curr);
-				next = mid+1 < deque.size() ? deque.remove(mid+1) : null;
+				next = mid+1 < deque.size() && curr.getLogicalEndPosition() >= deque.get(mid+1).getLogicalStartPosition() ? deque.remove(mid+1) : null;
 			}
 		}
 	}
