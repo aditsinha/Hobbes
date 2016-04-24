@@ -14,7 +14,7 @@ public class FileChangesHandler {
 	public static final long byteThreshold = 1000;
     
 
-    public FileChangesHandler(FileSystem fileSystem, Path dataPath, Path blockLogPath, Path byteLogPath) {
+    public FileChangesHandler(FileSystem fileSystem, Path dataPath, Path blockLogPath, Path byteLogPath) throws IOException {
 	byteChanges = new FileByteChanges(fileSystem, dataPath, byteLogPath);
 	blockChanges = new FileBlockChanges(fileSystem, dataPath, blockLogPath);
     }
@@ -23,7 +23,7 @@ public class FileChangesHandler {
 	return dataPath;
     }
 
-    public void write(List<ByteArrayDataRange> changes) {
+    public void write(List<ByteArrayDataRange> changes) throws IOException {
 	FileByteChangesDeque changeDeque = byteChanges.getDeque();
 	for (ByteArrayDataRange change : changes) {
 	    changeDeque.add(change);
@@ -33,7 +33,7 @@ public class FileChangesHandler {
 	}
     }
 
-	public void byteFlush() {
+	public void byteFlush() throws IOException {
 		FileByteChangesDeque fbcd = byteChanges.getDeque();
 		blockChanges.incorporateChanges(fbcd);
 
@@ -43,7 +43,7 @@ public class FileChangesHandler {
 	}
 
 	/* Write everything to stable storage */
-	public void sync() {
+	public void sync() throws IOException {
 		byteChanges.writeLog();
 		blockChanges.sync();
 	}

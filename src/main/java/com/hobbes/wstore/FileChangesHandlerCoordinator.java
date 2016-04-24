@@ -41,7 +41,7 @@ public class FileChangesHandlerCoordinator {
 	currLeast = currIndex = 0;
     }
 
-    public synchronized FileChangesHandler get(Path dataPath, Path blockChangesLog, Path byteChangesLog) {
+    public synchronized FileChangesHandler get(Path dataPath, Path blockChangesLog, Path byteChangesLog) throws IOException {
 	FileCacheEntry entry = table.get(dataPath);
 	
 	if (entry != null) {
@@ -72,7 +72,7 @@ public class FileChangesHandlerCoordinator {
 	return entry.handler;
     }
 
-    public synchronized void unget(FileChangesHandler handler) {
+    public synchronized void unget(FileChangesHandler handler) throws IOException {
 	Path p = handler.getDataPath();
 	table.get(p).refCount--;
 	
@@ -81,7 +81,7 @@ public class FileChangesHandlerCoordinator {
 	}
     }
     
-    public void evict() {
+    public void evict() throws IOException {
 	int trialCount = 0;
 	
 	while (trialCount < (CLOCK_CONSTANT + 1)  * size) {
@@ -101,7 +101,7 @@ public class FileChangesHandlerCoordinator {
 	}
     }
 
-    public void tableSync() {
+    public void tableSync() throws IOException {
 	for(Map.Entry<Path, FileCacheEntry> cacheEntry : table.entrySet()) {
 	    cacheEntry.getValue().handler.sync();
 	    table.remove(cacheEntry.getKey());

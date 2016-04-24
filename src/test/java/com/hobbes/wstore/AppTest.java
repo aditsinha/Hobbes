@@ -4,6 +4,8 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import org.apache.hadoop.fs.*;
+
 /**
  * Unit test for simple App.
  */
@@ -31,8 +33,16 @@ public class AppTest
     /**
      * Rigourous Test :-)
      */
-    public void testApp()
+    public void testApp() throws Exception
     {
-        assertTrue( true );
+	FileSystem fs = FileSystemFactory.get();
+	//assertTrue(fs.exists(new Path("/home/ubuntu/hobbes-chris/h")));
+	FSDataOutputStream out = fs.create(new Path("hello"));
+	out.writeUTF("Hello World!!\n");
+	out.hsync();
+	out.close();
+
+	//FSDataInputStream in = fs.read(new Path("/home/ubuntu/hobbes-chris/hi"));
+	assertEquals(0, fs.getFileStatus(new Path("hello")).getLen());
     }
 }
