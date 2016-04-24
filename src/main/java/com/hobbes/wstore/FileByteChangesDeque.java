@@ -8,10 +8,12 @@ public class FileByteChangesDeque  {
 
 	private ArrayList<ByteArrayDataRange> deque;
 	private Path dataFile;
+	private long numChanges;
 
 	public FileByteChangesDeque(Path dataFile) {
 		this.dataFile = dataFile;
 		this.deque = new ArrayList<ByteArrayDataRange>();
+		this.numChanges = 0;
 	}
 
 	public Path getPath() {
@@ -23,6 +25,10 @@ public class FileByteChangesDeque  {
 			String data = new String(deque.get(i).backing);
 			System.out.println("POSITION " + Integer.toString(i) + " - START: " + Long.toString(deque.get(i).getLogicalStartPosition()) + ", END: " + Long.toString(deque.get(i).getLogicalEndPosition()) + ", BYTES: " + data);
 		}
+	}
+
+	public long getNumChanges() {
+		return numChanges;
 	}
 
 	public void merge(ByteArrayDataRange b1, ByteArrayDataRange b2) {
@@ -128,6 +134,10 @@ public class FileByteChangesDeque  {
 
 	public void add(ByteArrayDataRange b) {
 		int mid = search(b.getLogicalStartPosition());
+
+		// this overestimates the # bytes changed 
+		numChanges += b.backing.length;
+
 		if(mid  == -1) {
 			deque.add(b);
 			return;
