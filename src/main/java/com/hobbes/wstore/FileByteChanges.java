@@ -31,6 +31,10 @@ public class FileByteChanges {
 		return d;
 	}
 
+	public void clearDeque() {
+		d.clearDeque();
+	}
+
 	public void readLog(DataInputStream logIn) throws IOException {
 		try {
 			while(true) {
