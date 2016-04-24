@@ -5,26 +5,49 @@ import java.io.*;
 import org.apache.hadoop.fs.*;
 
 public class FileChangesHandlerCoordinator {
-    private Map<Path, FileChangesHandler> table;
-    private Map<Path, Integer> refCount;
+
+    private static final int CLOCK_CONSTANT = 3;
+
+    private static class FileCacheEntry {
+	public FileChangesHandler handler;
+	public int refCount;
+	public int evictClock;
+	public int clockArrayIndex;
+	public Path path;
+
+	public FileCacheEntry(FileChangesHandler handler, int clockArrayIndex, Path path) {
+	    this.handler = handler;
+	    this.clockArrayIndex = clockArrayIndex;
+	    this.path = path;
+	    refCount = 1;
+	    evictClock = CLOCK_CONSTANT;
+	}
+    }
+
+    private Map<Path, FileCacheEntry> table;
+    private FileCacheEntry[] clockTable;
+    private int clockIndex;
+    
     private int size;
     private FileSystem fileSystem;
-    private Path[] lru;
     private int currLeast;
     private int currIndex;
 
-    public FileByteChangesCoordinator(FileSystem fileSystem, int size) {
-	table = new HashMap<Path, FileChangesHandler>();
+    public FileChangesHandlerCoordinator(FileSystem fileSystem, int size) {
+	table = new HashMap<>();
 	this.size = size;
 	this.fileSystem = fileSystem;
-	lru = new Path[size];
+	clockTable = new FileCacheEntry[2 * size];
 	currLeast = currIndex = 0;
     }
 
     public synchronized FileChangesHandler get(Path dataPath, Path blockChangesLog, Path byteChangesLog) {
-	if (table.containsKey(daatPath)) {
-	    refCount.put(dataPath, refCount.get(dataPath) + 1);
-	    return table.get(dataPath);
+	FileCacheEntry entry = table.get(dataPath);
+	
+	if (entry != null) {
+	    entry.refCount++;
+	    entry.evictClock = CLOCK_CONSTANT;
+	    return entry.handler;
 	}
 
 	else {
@@ -33,42 +56,61 @@ public class FileChangesHandlerCoordinator {
 	    }
 
 	    FileChangesHandler handler = new FileChangesHandler(fileSystem, dataPath, blockChangesLog, byteChangesLog);
-	    
-	    table.put(dataPath, handler);
-	    refCount.put(dataPath, 1);
-	    
+	    int i;
+	    for (i = 0; i < 2*size; i++) {
+		if (clockTable[i] == null) {
+		    // found an empty spoty
+		    break;
+		}
+	    }
+		
+	    entry = new FileCacheEntry(handler, i, dataPath);
+	    clockTable[i] = entry;
+	    table.put(dataPath, entry);
 	}
+
+	return entry.handler;
     }
 
     public synchronized void unget(FileChangesHandler handler) {
 	Path p = handler.getDataPath();
-	refCount.put(p, refCount.get(p) - 1);
-
+	table.get(p).refCount--;
+	
 	if (table.size() > size) {
 	    evict();
 	}
     }
     
-    public FileByteChanges evict() {
-	Path least = lru[currLeast];
-	lru[currLeast] = null;
-	FileByteChanges ret = table.remove(least);
-	ret.writeLog();
-	currLeast = (currLeast + 1) % size;
-	return ret;
+    public void evict() {
+	int trialCount = 0;
+	
+	while (trialCount < (CLOCK_CONSTANT + 1)  * size) {
+	    FileCacheEntry entry = clockTable[clockIndex];
+	    
+	    if (entry != null && entry.evictClock <= 0 && entry.refCount <= 0) {
+		// evict me!
+		entry.handler.sync();
+		clockTable[clockIndex] = null;
+		table.remove(entry.path);
+	    } else if (entry != null && entry.refCount <= 0) {
+		entry.evictClock--;
+	    }
+
+	    clockIndex = (clockIndex + 1) % clockTable.length;
+	    trialCount++;
+	}
     }
 
-    public void tableFlush() {
-	for(Map.Entry<Path, FileByteChanges> entry : table.entrySet()) {
-	    entry.getValue().writeLog();
-	    table.remove(entry.getKey());
+    public void tableSync() {
+	for(Map.Entry<Path, FileCacheEntry> cacheEntry : table.entrySet()) {
+	    cacheEntry.getValue().handler.sync();
+	    table.remove(cacheEntry.getKey());
 	}
 	
-	for(int i=0; i < size; i++) {
-	    lru[i] = null;
+	for(int i=0; i < clockTable.length; i++) {
+	    clockTable[i] = null;
 	}
-	currLeast = currIndex = 0;
-    }
 
-		
+	clockIndex = 0;
+    }
 }
