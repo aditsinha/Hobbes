@@ -5,6 +5,7 @@ import java.io.*;
 import org.apache.hadoop.fs.*;
 
 public class ModifiedFileSystem {
+    /*
 	private FileSystem fs;
 	// cordinator gives the handlers which are used output and input streams
 	private static FileChangesHandler handler;
@@ -38,5 +39,7 @@ public class ModifiedFileSystem {
 	public void close() throws IOException {
 		fs.close()
 	}
+
+    */
 
 }

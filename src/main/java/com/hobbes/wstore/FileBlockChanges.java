@@ -72,7 +72,7 @@ class FileBlockChanges {
 		// can finish with this block
 		DiskLocation rangeEnd =
 		    new DiskLocation(physicalBlock, currentBlockStartOffset + bytesRemaining, dataBlockSize);
-		diskRanges.add(new DiskDataRange(rangeStartLogical, logicalEnd,
+		diskRanges.add(new DiskDataRange(dataIn, rangeStartLogical, logicalEnd,
 						 rangeStart, rangeEnd));
 		bytesRemaining = 0;
 	    } else { 
@@ -86,7 +86,7 @@ class FileBlockChanges {
 		    // we can't include the next block in the same range, so terminate this
 		    DiskLocation rangeEnd = new DiskLocation(physicalBlock, dataBlockSize, dataBlockSize);
 		    long rangeEndLogical = (logicalEnd - logicalStart) - bytesRemaining;
-		    diskRanges.add(new DiskDataRange(rangeStartLogical, rangeEndLogical,
+		    diskRanges.add(new DiskDataRange(dataIn, rangeStartLogical, rangeEndLogical,
 						     rangeStart, rangeEnd));
 		    rangeStart = new DiskLocation(nextPhysicalBlock, 0, dataBlockSize);
 		    rangeStartLogical = rangeEndLogical;
@@ -154,14 +154,14 @@ class FileBlockChanges {
 	    int bytesToCopy = (int) Math.min(change.size(), dataBlockSize - changeStartByteOffset);
 
 
-	    change.getData(rewriteBlock, (int)changeStartByteOffset, bytesToCopy);
+	    change.getData(0, rewriteBlock, (int)changeStartByteOffset, bytesToCopy);
 	    lastChangeLogicalBlock = changeStartLogicalBlock;
 
 	    if (changeStartLogicalBlock == newFileSize / dataBlockSize) {
 		// working in the last block.  need to increment the file size by the amount I added
-		int oldFileEndOffset = newFileSize % dataBlockSize;
-		int newFileEndOFfset = changeStartByteOffset + bytesToCopy;
-		newFileSize += (newFileEndOffste - oldFileEndOFfset);
+		int oldFileEndOffset = (int) (newFileSize % dataBlockSize);
+		int newFileEndOffset = (int) changeStartByteOffset + bytesToCopy;
+		newFileSize += (newFileEndOffset - oldFileEndOffset);
 	    }
 
 	    boolean shouldFlushBlock = true;
@@ -218,7 +218,7 @@ class FileBlockChanges {
 	dataOut.hsync();
     }
 
-    public long getLastLogicalByte() {
+    public long getLastLogicalPosition() {
 	return logicalFileSize;
     }
 

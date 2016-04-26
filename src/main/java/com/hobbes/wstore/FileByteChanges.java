@@ -35,7 +35,7 @@ public class FileByteChanges {
 		d.clearDeque();
 	}
 
-	public long getLastLogicalByte() {
+	public long getLastLogicalPosition() {
 		ArrayList<ByteArrayDataRange> deque = d.getDeque();
 		return deque.get(deque.size()-1).getLogicalEndPosition();
 	}
