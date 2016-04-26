@@ -17,6 +17,8 @@ class FileBlockChanges {
     private FSDataInputStream dataIn;
     private FSDataOutputStream dataOut;
     private FSDataOutputStream logOut;
+
+    private long logicalFileSize;
     
     public FileBlockChanges(FileSystem fileSystem, Path dataFile, Path logFile) throws IOException {
 	FileStatus status = fileSystem.getFileStatus(dataFile);
@@ -39,9 +41,15 @@ class FileBlockChanges {
     private void readLogFile(DataInputStream logIn) throws IOException {
 	// we want to read the log in order to create the block map.
 	while (logIn.available() > 0) {
-	    long logical = logIn.readLong();
-	    long physical = logIn.readLong();
-	    blockMap.put(logical, physical);
+	    char which = logIn.readChar();
+	    if (which == 's') {
+		long size = logIn.readLong();
+		logicalFileSize = size;
+	    } else if (which == 'c') {
+		long logical = logIn.readLong();
+		long physical = logIn.readLong();
+		blockMap.put(logical, physical);
+	    }
 	}
     }
     
@@ -111,7 +119,8 @@ class FileBlockChanges {
 
 	long lastChangeLogicalBlock = -1;
 	int lastChangeEndOffset = 0;
-	
+
+	long newFileSize = logicalFileSize;
 	
 	int i = 0;
 	ByteArrayDataRange change = null;
@@ -134,20 +143,26 @@ class FileBlockChanges {
 		assert changeStartByteOffset >= lastChangeEndOffset;
 		dataIn.read(dataBlockSize * changeStartLogicalBlock + lastChangeEndOffset,
 			    rewriteBlock, lastChangeEndOffset, changeStartByteOffset - lastChangeEndOffset);
-
 	    } else {
 		// copy from the beginning of the block to the start
 		// of my change from disk
 		dataIn.read(dataBlockSize * changeStartLogicalBlock,
 			    rewriteBlock, 0, changeStartByteOffset);
 	    }
-	    
 
 	    // copy my change into the rewrite block 
 	    int bytesToCopy = (int) Math.min(change.size(), dataBlockSize - changeStartByteOffset);
 
+
 	    change.getData(rewriteBlock, (int)changeStartByteOffset, bytesToCopy);
 	    lastChangeLogicalBlock = changeStartLogicalBlock;
+
+	    if (changeStartLogicalBlock == newFileSize / dataBlockSize) {
+		// working in the last block.  need to increment the file size by the amount I added
+		int oldFileEndOffset = newFileSize % dataBlockSize;
+		int newFileEndOFfset = changeStartByteOffset + bytesToCopy;
+		newFileSize += (newFileEndOffste - oldFileEndOFfset);
+	    }
 
 	    boolean shouldFlushBlock = true;
 	    if (bytesToCopy < change.size()) {
@@ -173,8 +188,6 @@ class FileBlockChanges {
 		if (!nextInSameBlock) {
 		    shouldFlushBlock = true;
 		    // get data from the end of the change to the end of the block
-
-
 		    dataIn.read(dataBlockSize * changeStartLogicalBlock + changeEndByteOffset,
 				rewriteBlock, changeEndByteOffset, (int) (dataBlockSize - lastChangeEndOffset));
 		}
@@ -183,6 +196,7 @@ class FileBlockChanges {
 
 	    if (shouldFlushBlock) {
 		dataOut.write(rewriteBlock, 0, (int)dataBlockSize);
+		logOut.writeChar('b');
 		logOut.writeLong(changeStartLogicalBlock);
 		logOut.writeLong(nextPhysicalBlock);
 		blockMap.put(changeStartLogicalBlock, nextPhysicalBlock);
@@ -194,14 +208,22 @@ class FileBlockChanges {
 	    lastChangeEndOffset = changeEndByteOffset;
 	}
 
+	if (newFileSize != logicalFileSize) {
+	    logOut.writeChar('s');
+	    logOut.writeLong(newFileSize);
+	    logicalFileSize = newFileSize;
+	}
+
 	logOut.hsync();
 	dataOut.hsync();
     }
 
-	/* Write to stable storage */
-	public void sync() {
+    public long getLastLogicalByte() {
+	return logicalFileSize;
+    }
 
-	}
-    
+    /* Write to stable storage */
+    public void sync() {
+
+    }
 }
-
