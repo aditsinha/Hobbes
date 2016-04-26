@@ -35,6 +35,11 @@ public class FileByteChanges {
 		d.clearDeque();
 	}
 
+	public long getLastByte() {
+		ArrayList<ByteArrayDataRange> deque = d.getDeque();
+		return deque.get(deque.size()-1).getLogicalEndPosition();
+	}
+
 	public void readLog(DataInputStream logIn) throws IOException {
 		try {
 			while(true) {
