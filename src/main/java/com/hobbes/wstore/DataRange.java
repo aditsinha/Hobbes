@@ -1,5 +1,6 @@
 package com.hobbes.wstore;
 
+import java.io.*;
 /**
  * Represents a range of data in a file.  The start is inclusive and
  * the end is exclusive
@@ -33,7 +34,7 @@ abstract class DataRange {
     /**
      * Copy this data range into buf, starting at buf[pos]
      */
-    public abstract long getData(byte[] buf, int pos, int len);
+    public abstract long getData(long relativeStartPosition, byte[] buf, int pos, int len) throws IOException;
 
     public long size() {
 	return logicalEndPosition - logicalStartPosition;
