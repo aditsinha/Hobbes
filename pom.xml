@@ -33,7 +33,17 @@
       <artifactId>hadoop-core</artifactId>
       <version>1.2.1</version>
     </dependency>
-
-
   </dependencies>
+
+  <build>
+    <testResources>
+      <testResource>
+	<directory>/usr/local/hadoop/etc/hadoop</directory>
+      </testResource>
+      <testResource>
+	<directory>/usr/local/hadoop/share/doc/hadoop/hadoop-project-dist/hadoop-common</directory>
+      </testResource>
+    </testResources>
+  </build>
+
 </project>

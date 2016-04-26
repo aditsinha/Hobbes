@@ -5,6 +5,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import org.apache.hadoop.fs.*;
+import java.io.*;
 
 /**
  * Unit test for simple App.
@@ -35,14 +36,29 @@ public class AppTest
      */
     public void testApp() throws Exception
     {
+	Path path = new Path("hello");
 	FileSystem fs = FileSystemFactory.get();
-	//assertTrue(fs.exists(new Path("/home/ubuntu/hobbes-chris/h")));
-	FSDataOutputStream out = fs.create(new Path("hello"));
-	out.writeUTF("Hello World!!\n");
-	out.hsync();
+
+	FSDataOutputStream out;
+
+	if (fs.exists(path)) {
+	    out = fs.append(path);
+	} else {
+	    out = fs.create(path);
+	}
+
+	out.writeBytes("Hello World!!\n");
 	out.close();
 
-	//FSDataInputStream in = fs.read(new Path("/home/ubuntu/hobbes-chris/hi"));
-	assertEquals(0, fs.getFileStatus(new Path("hello")).getLen());
+	FSDataInputStream in = fs.open(path);
+	BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+
+	String line;
+	int lineCount = 0;
+	while ((line = reader.readLine()) != null) {
+	    assertEquals("Hello World!!", line);
+	    lineCount++;
+	}
+	System.out.println("Line Count: " + lineCount);
     }
 }

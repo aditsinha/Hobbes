@@ -15,7 +15,9 @@ class FileSystemFactory {
     public static void configure(String[] args) throws IOException {
 		Configuration tempConf = new Configuration();
 		GenericOptionsParser parser = new GenericOptionsParser(tempConf, args);
+		tempConf.set("dfs.replication", "1");
 		conf = tempConf;
+		System.out.println(conf.toString());
     }
 	
 	public static FileSystem get() throws IOException {
