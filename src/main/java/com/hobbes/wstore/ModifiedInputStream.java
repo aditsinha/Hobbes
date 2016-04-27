@@ -7,6 +7,7 @@ import org.apache.hadoop.fs.*;
 public class ModifiedInputStream {
 
 	private static FileChangesHandler handler;
+	private long seekPosition = 0;
 
 	public ModifiedInputStream (FileChangesHandler handler) {
 		this.handler = handler;
@@ -24,10 +25,13 @@ public class ModifiedInputStream {
 		return bytesReadSoFar;
 	}
 
-	// pass logical start
-	// save that value in an instance
-	// public seek () {
-
-	// }
-
+	// check if its a seekable position and sets it
+	public boolean seek (long position) throws IOException {
+		long fileSize = handler.getLastLogicalPosition();
+		if (position > fileSize) {
+			return false;
+		}
+		seekPosition = position;
+		return true;
+	}
 }

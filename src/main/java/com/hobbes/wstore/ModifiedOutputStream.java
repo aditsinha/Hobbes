@@ -8,6 +8,7 @@ public class ModifiedOutputStream {
 
 	List<ByteArrayDataRange> changes;
 	private static FileChangesHandler handler;
+	private long seekPosition = 0;
 	
 	public ModifiedOutputStream (FileChangesHandler handler) {
 		this.handler = handler;
@@ -26,5 +27,15 @@ public class ModifiedOutputStream {
 
 	public void hsync() throws IOException {
 		handler.sync();
+	}
+
+	// check if its a seekable position and sets it
+	public boolean seek (long position) throws IOException {
+		long fileSize = handler.getLastLogicalPosition();
+		if (position > fileSize) {
+			return false;
+		}
+		seekPosition = position;
+		return true;
 	}
 }

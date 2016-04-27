@@ -10,7 +10,7 @@ public class ModifiedFileSystem {
 	protected ModifiedFileSystem(FileSystem fs) {
 		this.fs = fs;
 
-	 }
+	}
 
 	public static ModifiedFileSystem get() throws IOException {
 		return new ModifiedFileSystem(FileSystemFactory.get());
