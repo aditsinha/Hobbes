@@ -6,22 +6,24 @@ import org.apache.hadoop.fs.*;
 
 public class FileChangesHandlerCoordinator {
 
+	private static FileChangesHandlerCoordinator instance = null;
     private static final int CLOCK_CONSTANT = 3;
+    private static final int SIZE = 5000;
 
     private static class FileCacheEntry {
-	public FileChangesHandler handler;
-	public int refCount;
-	public int evictClock;
-	public int clockArrayIndex;
-	public Path path;
+		public FileChangesHandler handler;
+		public int refCount;
+		public int evictClock;
+		public int clockArrayIndex;
+		public Path path;
 
-	public FileCacheEntry(FileChangesHandler handler, int clockArrayIndex, Path path) {
-	    this.handler = handler;
-	    this.clockArrayIndex = clockArrayIndex;
-	    this.path = path;
-	    refCount = 1;
-	    evictClock = CLOCK_CONSTANT;
-	}
+		public FileCacheEntry(FileChangesHandler handler, int clockArrayIndex, Path path) {
+		    this.handler = handler;
+		    this.clockArrayIndex = clockArrayIndex;
+		    this.path = path;
+		    refCount = 1;
+		    evictClock = CLOCK_CONSTANT;
+		}
     }
 
     private Map<Path, FileCacheEntry> table;
@@ -33,13 +35,20 @@ public class FileChangesHandlerCoordinator {
     private int currLeast;
     private int currIndex;
 
-    public FileChangesHandlerCoordinator(FileSystem fileSystem, int size) {
-	table = new HashMap<>();
-	this.size = size;
-	this.fileSystem = fileSystem;
-	clockTable = new FileCacheEntry[2 * size];
-	currLeast = currIndex = 0;
+    protected FileChangesHandlerCoordinator() throws IOException {
+		table = new HashMap<>();
+		this.size = SIZE;
+		this.fileSystem = FileSystemFactory.get();
+		clockTable = new FileCacheEntry[2 * size];
+		currLeast = currIndex = 0;
     }
+
+    public static FileChangesHandlerCoordinator getInstance() throws IOException {
+     	if(instance == null) {
+        	instance = new FileChangesHandlerCoordinator();
+     	}
+    	return instance;
+   }
 
     public synchronized FileChangesHandler get(Path dataPath, Path blockChangesLog, Path byteChangesLog) throws IOException {
 	FileCacheEntry entry = table.get(dataPath);

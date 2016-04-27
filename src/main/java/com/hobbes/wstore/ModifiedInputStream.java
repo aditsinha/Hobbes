@@ -4,25 +4,27 @@ import java.io.*;
 
 import org.apache.hadoop.fs.*;
 
-public class ModifiedOutputStream {
+public class ModifiedInputStream {
 
 	private static FileChangesHandler handler;
-	private static FSDataInputStream inputStream;
 
-	public ModifiedInputStream (FSDataInputStream inputStream, FileChangesHandler handler) {
-		this.inputStream = inputStream;
+	public ModifiedInputStream (FileChangesHandler handler) {
 		this.handler = handler;
 	}
 	
-	public ByteBuffer read(long position, byte[] buffer, int offset, int length) throws IOException{
-		// get the filechanges handler
+	public int read(long position, byte[] buffer, int offset, int length) throws IOException{
 		List<DataRange> data = handler.read(position, length);
 
 		// int 
 		// for (DataRange temp : data) {
 		// 	temp.getData(0, buffer, int pos, int len);
 		// }
-		return buffer;
+		// Eventually change this to the number of bytes read
+		return 0;
 	}
+
+	// public seek () {
+
+	// }
 
 }

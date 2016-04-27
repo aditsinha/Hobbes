@@ -8,20 +8,19 @@ public class ModifiedOutputStream {
 
 	List<ByteArrayDataRange> changes;
 	private static FileChangesHandler handler;
-	private static FSDataOutputStream outputStream;
 	
-	public ModifiedOutputStream (FSDataOutputStream outputStream, FileChangesHandler handler) {
-		this.outputStream = outputStream;
+	public ModifiedOutputStream (FileChangesHandler handler) {
 		this.handler = handler;
 	}
 
-	public void hflush() throws IOException{
-		FileChangesHandler fch.write(changes);
+	// public write ()
+
+	public void hflush() throws IOException {
+		handler.write(changes);
 		changes.clear();
 	}
 
-	// Still waiting for Adit to expose this feature
-	public void hsync() {
-
+	public void hsync() throws IOException {
+		handler.sync();
 	}
 }
