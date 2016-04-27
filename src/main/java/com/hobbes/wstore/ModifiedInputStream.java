@@ -12,15 +12,16 @@ public class ModifiedInputStream {
 		this.handler = handler;
 	}
 	
-	public int read(long position, byte[] buffer, int offset, int length) throws IOException{
+	public long read(long position, byte[] buffer, int offset, int length) throws IOException{
 		List<DataRange> data = handler.read(position, length);
 
-		// int 
-		// for (DataRange temp : data) {
-		// 	temp.getData(0, buffer, int pos, int len);
-		// }
-		// Eventually change this to the number of bytes read
-		return 0;
+		int bytesReadSoFar = 0;
+		for (DataRange temp : data) {
+			int bytesRead = temp.getData(0, buffer, bytesReadSoFar, (int)temp.size());
+			bytesReadSoFar += bytesRead;
+		}
+
+		return bytesReadSoFar;
 	}
 
 	// public seek () {
