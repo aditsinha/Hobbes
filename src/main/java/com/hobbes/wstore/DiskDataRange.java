@@ -12,7 +12,7 @@ class DiskDataRange extends DataRange {
     }
 
     @Override
-    public long getData(byte[] buf, int pos, int len) {
+    public long getData(long relativeStartPosition, byte[] buf, int pos, int len) {
 	// Do nothing for now
 	return 0;
     }

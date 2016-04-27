@@ -33,7 +33,7 @@ abstract class DataRange {
     /**
      * Copy this data range into buf, starting at buf[pos]
      */
-    public abstract long getData(byte[] buf, int pos, int len);
+    public abstract long getData(long relativeStartPosition, byte[] buf, int pos, int len);
 
     public long size() {
 	return logicalEndPosition - logicalStartPosition;

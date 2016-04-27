@@ -13,7 +13,7 @@ class ByteArrayDataRange extends DataRange {
     }
     
     @Override
-    public long getData(byte[] buf, int pos, int len) {
+    public long getData(long relativeStartPosition, byte[] buf, int pos, int len) {
 	int toCopy = (int) Math.min(len, getLogicalEndPosition() - getLogicalStartPosition());
 	System.arraycopy(backing, 0, buf, pos, toCopy);
 	return toCopy;
