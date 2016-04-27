@@ -19,8 +19,9 @@ class DiskDataRange extends DataRange {
 
     @Override
     public long getData(long relativeStartPosition, byte[] buf, int pos, int len) throws IOException {
-	// Do nothing for now
-		return ((long)(in.read(relativeStartPosition, buf, pos, len)));
+	System.out.println("got " + (startLoc.getAbsoluteOffset() + relativeStartPosition) + " " + pos + " " + len);
+
+	return ((long)(in.read(startLoc.getAbsoluteOffset() + relativeStartPosition , buf, pos, len)));
 
     }
 
@@ -35,5 +36,4 @@ class DiskDataRange extends DataRange {
 	return new DiskDataRange(in, start, end, new DiskLocation(startAbsOffset, blockSize),
 				 new DiskLocation(endAbsOffset, blockSize));
     }
-    
 }

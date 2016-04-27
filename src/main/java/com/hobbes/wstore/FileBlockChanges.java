@@ -8,7 +8,7 @@ import org.apache.hadoop.fs.*;
 
 class FileBlockChanges {
 
-    private Map<Long, Long> blockMap;
+    private Map<Long, Long> blockMap = new HashMap<>();
     
     private final long dataBlockSize;
 
@@ -19,23 +19,28 @@ class FileBlockChanges {
     private FSDataOutputStream logOut;
 
     private long logicalFileSize;
+
+    Path dataFile;
+    FileSystem fileSystem;
     
     public FileBlockChanges(FileSystem fileSystem, Path dataFile, Path logFile) throws IOException {
 	FileStatus status = fileSystem.getFileStatus(dataFile);
-
 	this.dataBlockSize = status.getBlockSize();
 	
 	long fileSize = status.getLen();
-	assert fileSize % dataBlockSize == 0;
+	System.out.println("Block size: dataBlockSize");
+
+	//	assert fileSize % dataBlockSize == 0;
 	this.nextPhysicalBlock = fileSize / dataBlockSize;
 
 	this.dataIn = fileSystem.open(dataFile);
 	this.dataOut = fileSystem.append(dataFile);
 	this.logOut = fileSystem.append(logFile);
-
 	FSDataInputStream logIn = fileSystem.open(logFile);
-
 	readLogFile(logIn);
+
+	this.dataFile = dataFile;
+	this.fileSystem = fileSystem;
     }
 
     private void readLogFile(DataInputStream logIn) throws IOException {
@@ -45,7 +50,7 @@ class FileBlockChanges {
 	    if (which == 's') {
 		long size = logIn.readLong();
 		logicalFileSize = size;
-	    } else if (which == 'c') {
+	    } else if (which == 'b') {
 		long logical = logIn.readLong();
 		long physical = logIn.readLong();
 		blockMap.put(logical, physical);
@@ -102,6 +107,7 @@ class FileBlockChanges {
 
     public long getPhysicalBlockNumber(long logicalBlock)  {
 	if (blockMap.containsKey(logicalBlock)) {
+	    System.out.println("REMAPPING " + logicalBlock + " TO " + blockMap.get(logicalBlock));
 	    return blockMap.get(logicalBlock);
 	}
 	return logicalBlock;
@@ -123,15 +129,9 @@ class FileBlockChanges {
 	long newFileSize = logicalFileSize;
 	
 	int i = 0;
-	ByteArrayDataRange change = null;
+	ByteArrayDataRange change = changes.get(0);
 
-	while (change != null || i < changes.size()) {
-	    if (change == null) {
-		change = changes.get(i);
-		i++;
-	    }
-	    
-	    change = changes.get(i);
+	while (change != null) {
 	    
 	    long changeStartLogicalBlock = change.getLogicalStartPosition() / dataBlockSize;
 	    int changeStartByteOffset = (int) (change.getLogicalStartPosition() % dataBlockSize);
@@ -141,12 +141,12 @@ class FileBlockChanges {
 		// we want to copy from the end offset of the last
 		// change until the start of my change from disk
 		assert changeStartByteOffset >= lastChangeEndOffset;
-		dataIn.read(dataBlockSize * changeStartLogicalBlock + lastChangeEndOffset,
+		dataIn.read(dataBlockSize * getPhysicalBlockNumber(changeStartLogicalBlock) + lastChangeEndOffset,
 			    rewriteBlock, lastChangeEndOffset, changeStartByteOffset - lastChangeEndOffset);
 	    } else {
 		// copy from the beginning of the block to the start
 		// of my change from disk
-		dataIn.read(dataBlockSize * changeStartLogicalBlock,
+		dataIn.read(dataBlockSize * getPhysicalBlockNumber(changeStartLogicalBlock),
 			    rewriteBlock, 0, changeStartByteOffset);
 	    }
 
@@ -188,10 +188,15 @@ class FileBlockChanges {
 		if (!nextInSameBlock) {
 		    shouldFlushBlock = true;
 		    // get data from the end of the change to the end of the block
-		    dataIn.read(dataBlockSize * changeStartLogicalBlock + changeEndByteOffset,
-				rewriteBlock, changeEndByteOffset, (int) (dataBlockSize - lastChangeEndOffset));
+		    if (changeEndByteOffset > 0) {
+			dataIn.read(dataBlockSize * getPhysicalBlockNumber(changeStartLogicalBlock) + changeEndByteOffset,
+				    rewriteBlock, changeEndByteOffset, (int) (dataBlockSize - changeEndByteOffset));
+		    }
+		    // otherwise we were at the end of the block, so no need to override to the end
 		}
-		change = null;
+		
+		i++;
+		change = (i < changes.size()) ? changes.get(i) : null;
 	    }
 
 	    if (shouldFlushBlock) {
@@ -200,7 +205,6 @@ class FileBlockChanges {
 		logOut.writeLong(changeStartLogicalBlock);
 		logOut.writeLong(nextPhysicalBlock);
 		blockMap.put(changeStartLogicalBlock, nextPhysicalBlock);
-
 		nextPhysicalBlock++;
 	    }
 
@@ -216,6 +220,11 @@ class FileBlockChanges {
 
 	logOut.hsync();
 	dataOut.hsync();
+
+	// need to refresh the data in stream after sync'ing
+	dataIn.close();
+	dataIn = fileSystem.open(dataFile);
+
     }
 
     public long getLastLogicalPosition() {
