@@ -13,7 +13,11 @@ public class ModifiedOutputStream {
 		this.handler = handler;
 	}
 
-	// public write ()
+	public int write (int startPosition, byte[] buf, int length) throws IOException {
+		ByteArrayDataRange change = new ByteArrayDataRange(startPosition, startPosition+length, buf);
+		changes.add(change);
+		return length;		
+	}
 
 	public void hflush() throws IOException {
 		handler.write(changes);

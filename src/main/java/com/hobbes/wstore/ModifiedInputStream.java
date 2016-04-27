@@ -24,6 +24,8 @@ public class ModifiedInputStream {
 		return bytesReadSoFar;
 	}
 
+	// pass logical start
+	// save that value in an instance
 	// public seek () {
 
 	// }
