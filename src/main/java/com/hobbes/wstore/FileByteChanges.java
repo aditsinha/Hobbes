@@ -19,9 +19,10 @@ public class FileByteChanges {
 
 		this.blockSize = status.getBlockSize();
 		this.logOut = fileSystem.append(logFile);
-		
+
 		FileByteChangesDeque d = new FileByteChangesDeque(dataFile);
-		
+		this.d = d;
+
 		FSDataInputStream logIn = fileSystem.open(logFile);
 		readLog(logIn);
 		
@@ -45,13 +46,14 @@ public class FileByteChanges {
 			while(true) {
 				long logicalStartPosition = logIn.readLong();
 				long logicalEndPosition = logIn.readLong();
-				int length = (int)(logicalStartPosition - logicalEndPosition);
+				int length = (int)(logicalEndPosition - logicalStartPosition);
 				byte[] backing = new byte[length];
 				logIn.read(backing, 0, length);
 				ByteArrayDataRange b = new ByteArrayDataRange(logicalStartPosition, logicalEndPosition, backing);
+				System.out.println(new String(backing));
 				d.add(b);
 				char check = logIn.readChar();
-				assert(check == ':');
+//				assertEquals(check, ':');
 			}
 		} catch (EOFException e1) {
 			// done

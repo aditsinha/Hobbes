@@ -133,6 +133,7 @@ public class FileByteChangesDeque  {
 	}
 
 	public void add(ByteArrayDataRange b) {
+
 		int mid = search(b.getLogicalStartPosition());
 
 		// this overestimates the # bytes changed 
