@@ -56,54 +56,55 @@ public class AppTest
      */
     public void testApp() throws Exception
     {
-	Path data = new Path("/home/ubuntu/hobbes-chris/asdf");
-	Path path = new Path("/home/ubuntu/hobbes-chris/asdf.out");
-	FileSystem fs = FileSystemFactory.get();
+		
+		Path path = new Path("chris");
 
-	FSDataOutputStream dataOut = fs.create(data);
-	FSDataOutputStream out = fs.create(path);
+		FileSystem fs = FileSystemFactory.get();
+		short replication = 3;
+		long blockSize = 1048576;
 
-	/*if(fs.exists(data)) {
-		dataOut = fs.append(data);
-	} else {
-		dataOut = fs.create(data);
-	}*/
+		ModifiedFileSystem mfs = new ModifiedFileSystem(fs);
+		ModifiedOutputStream mos = mfs.create(path, true, 1000, replication, blockSize);
+		String write = "Hello World!!";
+		byte[] writeBytes = write.getBytes();
+		System.out.println(Integer.toString(writeBytes.length));
+		mos.write(0, writeBytes, writeBytes.length);
+		mos.close();
 
-	dataOut.writeBytes("hellllllo world");
-	dataOut.close();
-
-	/*if (fs.exists(path)) {
-	    out = fs.append(path);
-	} else {
-	    out = fs.create(path);
-	}*/
-
-	out.writeLong(0);
-	out.writeLong(6);
-	out.writeBytes("hello!");
-	out.writeChar(':');
-	out.writeLong(6);
-	out.writeLong(12);
-	out.writeBytes("world!");
-	out.writeChar(':');
-	out.close();
-
-	FileByteChanges fbc = new FileByteChanges(fs, data, path);
-	//assertEquals(fbc.getDeque().getDeque().size(), 2);
-	fbc.getDeque().print();
-
-	/*FSDataInputStream in = fs.open(path);
-	BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-
-	
-	String line;
-	int lineCount = 0;
-	while ((line = reader.readLine()) != null) {
-	    assertEquals("Hello World!!", line);
-	    lineCount++;
-	}
-	System.out.println("Line Count: " + lineCount);*/
+		ModifiedInputStream mis = mfs.open(path);
+		byte[] readBytes = new byte[writeBytes.length];
+		mis.read(0, readBytes, 0, writeBytes.length);
+		System.out.println(new String(readBytes));
+		
     }
+
+	/*public void testByteLog() {
+		Path data = new Path("/home/ubuntu/hobbes-chris/asdf");
+		Path path = new Path("/home/ubuntu/hobbes-chris/asdf.out");
+		FileSystem fs = FileSystemFactory.get();
+	
+		FSDataOutputStream dataOut = fs.create(data);
+		FSDataOutputStream out = fs.create(path);
+	
+		dataOut.writeBytes("hellllllo world");
+		dataOut.close();
+	
+		out.writeLong(0);
+		out.writeLong(6);
+		out.writeBytes("hello!");
+		out.writeChar(':');
+		out.writeLong(6);
+		out.writeLong(12);
+		out.writeBytes("world!");
+		out.writeChar(':');
+		out.close();
+	
+		FileByteChanges fbc = new FileByteChanges(fs, data, path);
+		fbc.getDeque().print();
+	
+		
+	}
+
 
     public void testReadInBlockLog()
     {
@@ -160,5 +161,5 @@ public class AppTest
 	} catch (Exception e) {
 	    e.printStackTrace();
 	}
-    }
+    }*/
 }

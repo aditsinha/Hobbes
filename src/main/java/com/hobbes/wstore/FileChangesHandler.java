@@ -11,7 +11,7 @@ public class FileChangesHandler {
     private FileByteChanges byteChanges;
     private FileBlockChanges blockChanges;
 	
-	public static final long byteThreshold = 1000;
+	public static final long byteThreshold = 100000000;
     
 
     public FileChangesHandler(FileSystem fileSystem, Path dataPath, Path blockLogPath, Path byteLogPath) throws IOException {

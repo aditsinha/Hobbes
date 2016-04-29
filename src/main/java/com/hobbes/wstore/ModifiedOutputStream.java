@@ -20,6 +20,13 @@ public class ModifiedOutputStream {
 		return length;		
 	}
 
+	public void close() throws IOException {
+		hsync();
+		FileChangesHandlerCoordinator fchc = FileChangesHandlerCoordinator.getInstance();
+		fchc.unget(handler);
+	}
+		
+
 	public void hflush() throws IOException {
 		handler.write(changes);
 		changes.clear();
