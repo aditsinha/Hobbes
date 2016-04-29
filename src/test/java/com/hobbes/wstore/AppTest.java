@@ -49,15 +49,26 @@ public class AppTest
 	try {
 	    ModifiedFileSystem mfs = ModifiedFileSystem.get();
 	    ModifiedOutputStream mos = mfs.create(path, true, ONE_MB, (short)1, ONE_MB);
-	    mos.write(0, getBlock((byte)2, ONE_KB), ONE_KB);
+	    mos.write(0, getBlock((byte)0, ONE_KB), ONE_KB);
+	    mos.write(ONE_KB, getBlock((byte)1, ONE_KB), ONE_KB);
+	    mos.write(2*ONE_KB, getBlock((byte)2, ONE_KB/2), ONE_KB/2);
+
 	    mos.hflush();
 
+	    mos.write(0, getBlock((byte)3, ONE_KB/2), ONE_KB/2);
+
+	    mos.hflush();
+
+	    mos.hsync();
+
 	    ModifiedInputStream mis = mfs.open(path);
-	    byte[] data = new byte[ONE_KB];
-	    mis.read(0, data, 0, ONE_KB);
+	    byte[] data = new byte[5*ONE_KB/2];
+	    mis.read(0, data, 0, 5*ONE_KB/2);
 
-	    assertEquals(2, data[0]);
-
+	    assertEquals(3, data[0]);
+	    assertEquals(0, data[ONE_KB/2]);
+	    assertEquals(1, data[ONE_KB]);
+	    assertEquals(2, data[2*ONE_KB]);
 	} catch (Throwable t) {
 	    t.printStackTrace();
 	}

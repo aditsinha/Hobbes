@@ -235,4 +235,10 @@ class FileBlockChanges {
     public void sync() {
 
     }
+
+    public void teardown() {
+	dataIn.close();
+	dataOut.close();
+	logOut.close();
+    }
 }
