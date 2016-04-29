@@ -18,27 +18,29 @@ public class ModifiedFileSystem {
 
 	public ModifiedOutputStream create(Path f, boolean overwrite, int bufferSize, short replication, long blockSize) throws IOException{
 		fs.create(f, overwrite, bufferSize, replication, blockSize);
-		ArrayList<Path> logPaths = getFilePaths(f);
-		fs.create(logPaths.get(0));
-		fs.create(logPaths.get(1));
-		FileChangesHandler handler = FileChangesHandlerCoordinator.getInstance().get(f, logPaths.get(0), logPaths.get(1));
+		HashMap<String, Path> logPaths = getFilePaths(f);
+		Path blockChangesLogPath = logPaths.get("blockChangesLogPath");
+		Path byteChangesLogPath = logPaths.get("byteChangesLogPath");
+		fs.create(blockChangesLogPath);
+		fs.create(byteChangesLogPath);
+		FileChangesHandler handler = FileChangesHandlerCoordinator.getInstance().get(f, blockChangesLogPath, byteChangesLogPath);
 		return new ModifiedOutputStream(handler);
 	}
 
 	public boolean delete(Path f) throws IOException {
-		ArrayList<Path> logPaths = getFilePaths(f);
+		HashMap<String, Path> logPaths = getFilePaths(f);
 		boolean mainDel = fs.delete(f);
-		boolean blockDel = fs.delete(logPaths.get(0));
-		boolean byteDel = fs.delete(logPaths.get(1));
+		boolean blockDel = fs.delete(logPaths.get("blockChangesLogPath"));
+		boolean byteDel = fs.delete(logPaths.get("byteChangesLogPath"));
 		return (mainDel && byteDel && blockDel);
 	}
 
 	public ModifiedInputStream open(Path f) throws IOException {
 		fs.open(f);
-		ArrayList<Path> logPaths = getFilePaths(f);
-		Path blockChangesLogPath = logPaths.get(0);
-		Path byteChangesLogPath = logPaths.get(1);
-		FileChangesHandler handler = FileChangesHandlerCoordinator.getInstance().get(f, logPaths.get(0), logPaths.get(1));
+		HashMap<String, Path> logPaths = getFilePaths(f);
+		Path blockChangesLogPath = logPaths.get("blockChangesLogPath");
+		Path byteChangesLogPath = logPaths.get("byteChangesLogPath");
+		FileChangesHandler handler = FileChangesHandlerCoordinator.getInstance().get(f, blockChangesLogPath, byteChangesLogPath);
 		return new ModifiedInputStream(handler);
 	}
 
@@ -48,22 +50,22 @@ public class ModifiedFileSystem {
 
 	// modification to append
 	public ModifiedOutputStream write(Path f) throws IOException{
-		ArrayList<Path> logPaths = getFilePaths(f);
-		Path blockChangesLogPath = logPaths.get(0);
-		Path byteChangesLogPath = logPaths.get(1);
-		FileChangesHandler handler = FileChangesHandlerCoordinator.getInstance().get(f, logPaths.get(0), logPaths.get(1));
+		HashMap<String, Path> logPaths = getFilePaths(f);
+		Path blockChangesLogPath = logPaths.get("blockChangesLogPath");
+		Path byteChangesLogPath = logPaths.get("byteChangesLogPath");
+		FileChangesHandler handler = FileChangesHandlerCoordinator.getInstance().get(f, blockChangesLogPath, byteChangesLogPath);
 		return new ModifiedOutputStream(handler);
 	}
 
-	private ArrayList<Path> getFilePaths(Path f) throws IOException {
+	private HashMap<String, Path> getFilePaths(Path f) throws IOException {
 		String fName = f.getName();
 		Path parent = f.getParent();
 		Path blockChangesLogPath = new Path(parent.toString() + "/.logblock-" + fName);
 		Path byteChangesLogPath = new Path(parent.toString() + "/.logbyte-" + fName);
-		ArrayList<Path> al= new ArrayList<Path>();
-		al.add(blockChangesLogPath);
-		al.add(byteChangesLogPath);
-		return al;
+		HashMap<String, Path> hmap = new HashMap<String, Path>();
+		hmap.put("blockChangesLogPath", blockChangesLogPath);
+		hmap.put("byteChangesLogPath", byteChangesLogPath);
+		return hmap;
 	}
 
 }
