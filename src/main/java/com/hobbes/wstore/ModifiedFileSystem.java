@@ -19,8 +19,10 @@ public class ModifiedFileSystem {
 	public ModifiedOutputStream create(Path f, boolean overwrite, int bufferSize, short replication, long blockSize) throws IOException{
 		fs.create(f, overwrite, bufferSize, replication, blockSize);
 		HashMap<String, Path> logPaths = getFilePaths(f);
-		fs.create(logPaths.get("blockChangesLogPath"));
-		fs.create(logPaths.get("byteChangesLogPath"));
+		Path blockChangesLogPath = logPaths.get("blockChangesLogPath");
+		Path byteChangesLogPath = logPaths.get("byteChangesLogPath");
+		fs.create(blockChangesLogPath);
+		fs.create(byteChangesLogPath);
 		FileChangesHandler handler = FileChangesHandlerCoordinator.getInstance().get(f, blockChangesLogPath, byteChangesLogPath);
 		return new ModifiedOutputStream(handler);
 	}
