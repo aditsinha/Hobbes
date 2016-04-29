@@ -6,7 +6,7 @@ import org.apache.hadoop.fs.*;
 
 public class ModifiedOutputStream {
 
-	List<ByteArrayDataRange> changes;
+    List<ByteArrayDataRange> changes = new ArrayList<>();
 	private static FileChangesHandler handler;
 	private long seekPosition = 0;
 	

@@ -6,7 +6,7 @@ import org.apache.hadoop.fs.*;
 
 public class FileChangesHandlerCoordinator {
 
-	private static FileChangesHandlerCoordinator instance = null;
+    private static FileChangesHandlerCoordinator instance = null;
     private static final int CLOCK_CONSTANT = 3;
     private static final int SIZE = 5000;
 

@@ -11,7 +11,7 @@ public class FileChangesHandler {
     private FileByteChanges byteChanges;
     private FileBlockChanges blockChanges;
 	
-	public static final long byteThreshold = 1000;
+    public static final long byteThreshold = 1000;
     
 
     public FileChangesHandler(FileSystem fileSystem, Path dataPath, Path blockLogPath, Path byteLogPath) throws IOException {
@@ -29,7 +29,8 @@ public class FileChangesHandler {
 	    changeDeque.add(change);
 	}
 	if(changeDeque.getNumChanges() > byteThreshold) {
-		byteFlush();
+	    //	    System.out.println("FLUSHED");
+	    byteFlush();
 	}
     }
 
@@ -56,7 +57,10 @@ public class FileChangesHandler {
 	List<DataRange> ret  = new ArrayList<>();
 
 	long currentByte = start;
-	for (int i = byteChanges.getDeque().search(start); i < changeDeque.size() && currentByte - start < len; i++) {
+
+	//	System.out.println("CHANGE DEQUE SIZE: " + byteChanges.getDeque().getDeque().size());
+
+	for (int i = byteChanges.getDeque().search(start); i != -1 && i < changeDeque.size() && currentByte - start < len; i++) {
 
 	    DataRange recentChangeRange = changeDeque.get(i);
 	    long relevantStart = Math.max(start, recentChangeRange.getLogicalStartPosition());
