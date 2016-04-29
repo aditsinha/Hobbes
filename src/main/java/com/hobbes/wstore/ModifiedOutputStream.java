@@ -6,8 +6,8 @@ import org.apache.hadoop.fs.*;
 
 public class ModifiedOutputStream {
 
-	List<ByteArrayDataRange> changes;
-	private static FileChangesHandler handler;
+    List<ByteArrayDataRange> changes = new ArrayList<>();
+	private FileChangesHandler handler;
 	private long seekPosition = 0;
 	
 	public ModifiedOutputStream (FileChangesHandler handler) {
@@ -25,7 +25,6 @@ public class ModifiedOutputStream {
 		FileChangesHandlerCoordinator fchc = FileChangesHandlerCoordinator.getInstance();
 		fchc.unget(handler);
 	}
-		
 
 	public void hflush() throws IOException {
 		handler.write(changes);

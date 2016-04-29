@@ -6,24 +6,26 @@ import org.apache.hadoop.fs.*;
 
 public class ModifiedFileSystem {
 	private FileSystem fs;
+    private FileChangesHandlerCoordinator coordinator;
 
-	protected ModifiedFileSystem(FileSystem fs) {
+    protected ModifiedFileSystem(FileSystem fs, FileChangesHandlerCoordinator coordinator) {
 		this.fs = fs;
+		this.coordinator = coordinator;
 
 	}
 
 	public static ModifiedFileSystem get() throws IOException {
-		return new ModifiedFileSystem(FileSystemFactory.get());
+	    return new ModifiedFileSystem(FileSystemFactory.get(), FileChangesHandlerCoordinator.getInstance());
 	}
 
 	public ModifiedOutputStream create(Path f, boolean overwrite, int bufferSize, short replication, long blockSize) throws IOException{
-		fs.create(f, overwrite, bufferSize, replication, blockSize);
+	    fs.create(f, overwrite, bufferSize, replication, blockSize).close();
 		HashMap<String, Path> logPaths = getFilePaths(f);
 		Path blockChangesLogPath = logPaths.get("blockChangesLogPath");
 		Path byteChangesLogPath = logPaths.get("byteChangesLogPath");
-		fs.create(blockChangesLogPath);
-		fs.create(byteChangesLogPath);
-		FileChangesHandler handler = FileChangesHandlerCoordinator.getInstance().get(f, blockChangesLogPath, byteChangesLogPath);
+		fs.create(blockChangesLogPath).close();
+		fs.create(byteChangesLogPath).close();
+		FileChangesHandler handler = coordinator.get(f, blockChangesLogPath, byteChangesLogPath);
 		return new ModifiedOutputStream(handler);
 	}
 
@@ -40,7 +42,7 @@ public class ModifiedFileSystem {
 		HashMap<String, Path> logPaths = getFilePaths(f);
 		Path blockChangesLogPath = logPaths.get("blockChangesLogPath");
 		Path byteChangesLogPath = logPaths.get("byteChangesLogPath");
-		FileChangesHandler handler = FileChangesHandlerCoordinator.getInstance().get(f, blockChangesLogPath, byteChangesLogPath);
+		FileChangesHandler handler = coordinator.get(f, blockChangesLogPath, byteChangesLogPath);
 		return new ModifiedInputStream(handler);
 	}
 

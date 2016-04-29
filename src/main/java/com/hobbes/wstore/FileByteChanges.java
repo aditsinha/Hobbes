@@ -13,6 +13,7 @@ public class FileByteChanges {
 	private final long blockSize;
 
 	private FSDataOutputStream logOut;
+	private FSDataInputStream logIn;
 
 	public FileByteChanges(FileSystem fileSystem, Path dataFile, Path logFile) throws IOException {
 		FileStatus status = fileSystem.getFileStatus(dataFile);
@@ -23,10 +24,16 @@ public class FileByteChanges {
 		FileByteChangesDeque d = new FileByteChangesDeque(dataFile);
 		this.d = d;
 
-		FSDataInputStream logIn = fileSystem.open(logFile);
+		logIn = fileSystem.open(logFile);
 		readLog(logIn);
+		logIn.close();
 		
 	}
+
+	public void teardown() {
+		logOut.close();
+	}
+		
 
 	public FileByteChangesDeque getDeque() {
 		return d;

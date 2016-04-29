@@ -32,18 +32,8 @@ public class AppTest
         return new TestSuite( AppTest.class );
     }
 
-    private static int ONE_MB = 1048576;
-    private static byte[] getMbBlock(byte val) {
-	byte[] ret = new byte[ONE_MB];
-	Arrays.fill(ret, val);
-	return ret;
-    }
-
-    private static byte[] getHalfMbBlock(byte val) {
-	byte[] ret = new byte[ONE_MB / 2];
-	Arrays.fill(ret, val);
-	return ret;
-    }
+    private static final int ONE_KB = 1024;
+    private static final int ONE_MB = ONE_KB * ONE_KB;
 
     private static byte[] getBlock(byte val, int size) {
 	byte[] ret = new byte[size];
@@ -56,14 +46,16 @@ public class AppTest
      */
     public void testApp() throws Exception
     {
-		
+	try {	
 		Path path = new Path("chris");
 
 		FileSystem fs = FileSystemFactory.get();
 		short replication = 3;
 		long blockSize = 1048576;
 
-		ModifiedFileSystem mfs = new ModifiedFileSystem(fs);
+		FileChangesHandlerCoordinator fchc = FileChangesHandlerCoordinator.getInstance();
+
+		ModifiedFileSystem mfs = new ModifiedFileSystem(fs, fchc);
 		ModifiedOutputStream mos = mfs.create(path, true, 1000, replication, blockSize);
 		String write = "Hello World!!";
 		byte[] writeBytes = write.getBytes();
@@ -75,7 +67,12 @@ public class AppTest
 		byte[] readBytes = new byte[writeBytes.length];
 		mis.read(0, readBytes, 0, writeBytes.length);
 		System.out.println(new String(readBytes));
+		} catch (Exception e) {
+		 e.printStackTrace();
+		 }
+/*
 		
+*/		
     }
 
 	/*public void testByteLog() {
@@ -104,62 +101,5 @@ public class AppTest
 	
 		
 	}
-
-
-    public void testReadInBlockLog()
-    {
-	try {
-	    Path logPath = new Path("blockLog");
-	    Path dataPath = new Path("dataPath");
-	    FileSystem fs = FileSystemFactory.get();
-
-	    FSDataOutputStream logOut = fs.create(logPath);
-
-	    logOut.writeChar('b');
-	    logOut.writeLong(0);
-	    logOut.writeLong(0);
-	    logOut.writeChar('b');
-	    logOut.writeLong(1);
-	    logOut.writeLong(1);
-	    logOut.writeChar('s');
-	    logOut.writeLong(2 * ONE_MB);
-
-	    logOut.close();
-
-	    FSDataOutputStream dataOut = fs.create(dataPath, true, ONE_MB, (short) 1, ONE_MB);
-	    dataOut.write(getMbBlock((byte) 0), 0, ONE_MB);
-	    dataOut.write(getMbBlock((byte) 1), 0, ONE_MB);
-	    dataOut.close();
-
-	    FileBlockChanges fbc = new FileBlockChanges(fs, dataPath, logPath);
-
-	    FileByteChangesDeque fbcd = new FileByteChangesDeque(dataPath);
-	    
-	    fbcd.add(new ByteArrayDataRange(0, ONE_MB, getBlock((byte) 2, ONE_MB)));
-
-	    fbc.incorporateChanges(fbcd);
-
-	    System.out.println("hi");
-
-	    List<DataRange> resolved = fbc.resolve(0, 2*ONE_MB);
-	    assertEquals(2, resolved.size());
-	    byte[] data = new byte[2*ONE_MB];
-
-	    resolved.get(0).getData(0, data, 0, ONE_MB);
-	    resolved.get(1).getData(0, data, ONE_MB, ONE_MB);
-
-	    for (int i = 0; i < ONE_MB; i++) {
-		assertEquals(2, data[i]);
-	    }
-
-	    System.out.println("bye");
-	    
-	    for (int i = ONE_MB; i < 2*ONE_MB; i++) {
-		assertEquals(1, data[i]);
-	    }
-
-	} catch (Exception e) {
-	    e.printStackTrace();
-	}
-    }*/
+    */
 }
