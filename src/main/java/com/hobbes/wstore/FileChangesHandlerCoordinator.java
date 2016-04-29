@@ -99,6 +99,7 @@ public class FileChangesHandlerCoordinator {
 	    if (entry != null && entry.evictClock <= 0 && entry.refCount <= 0) {
 		// evict me!
 		entry.handler.sync();
+		entry.handler.teardown();
 		clockTable[clockIndex] = null;
 		table.remove(entry.path);
 	    } else if (entry != null && entry.refCount <= 0) {

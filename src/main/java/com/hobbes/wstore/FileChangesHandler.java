@@ -87,6 +87,11 @@ public class FileChangesHandler {
     public long getLastLogicalPosition() {
 	return (long) Math.max(byteChanges.getLastLogicalPosition(), blockChanges.getLastLogicalPosition());
     }
+
+    public void teardown() {
+	byteChanges.teardown();
+	blockChanges.teardown();
+    }
     /*
     public List<DataRange> readExperimental(long start, long len) {
 	FileByteChangesDeque changeDeque = byteChanges.getDeque();
