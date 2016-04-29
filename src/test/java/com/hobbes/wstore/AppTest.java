@@ -122,42 +122,38 @@ public class AppTest
 	    logOut.writeLong(1);
 	    logOut.writeChar('s');
 	    logOut.writeLong(2 * ONE_MB);
-	    logOut.writeChar('b');
-	    logOut.writeLong(0);
-	    logOut.writeLong(2);
 
 	    logOut.close();
 
 	    FSDataOutputStream dataOut = fs.create(dataPath, true, ONE_MB, (short) 1, ONE_MB);
 	    dataOut.write(getMbBlock((byte) 0), 0, ONE_MB);
 	    dataOut.write(getMbBlock((byte) 1), 0, ONE_MB);
-	    dataOut.write(getMbBlock((byte) 2), 0, ONE_MB);
 	    dataOut.close();
 
 	    FileBlockChanges fbc = new FileBlockChanges(fs, dataPath, logPath);
 
 	    FileByteChangesDeque fbcd = new FileByteChangesDeque(dataPath);
-
-	    fbcd.add(new ByteArrayDataRange(ONE_MB/2, 3*ONE_MB/2, getBlock((byte) 3, ONE_MB)));
+	    
+	    fbcd.add(new ByteArrayDataRange(0, ONE_MB, getBlock((byte) 2, ONE_MB)));
 
 	    fbc.incorporateChanges(fbcd);
 
+	    System.out.println("hi");
+
 	    List<DataRange> resolved = fbc.resolve(0, 2*ONE_MB);
-	    assertEquals(1, resolved.size());
+	    assertEquals(2, resolved.size());
 	    byte[] data = new byte[2*ONE_MB];
 
-	    resolved.get(0).getData(0, data, 0, 2*ONE_MB);
-	    //	    resolved.get(1).getData(0, data, ONE_MB, ONE_MB);
+	    resolved.get(0).getData(0, data, 0, ONE_MB);
+	    resolved.get(1).getData(0, data, ONE_MB, ONE_MB);
 
-	    for (int i = 0; i < ONE_MB/2; i++) {
+	    for (int i = 0; i < ONE_MB; i++) {
 		assertEquals(2, data[i]);
 	    }
 
-	    for (int i = ONE_MB/2; i < 3*ONE_MB/2; i++) {
-		assertEquals(3, data[i]);
-	    }
-
-	    for (int i = 3*ONE_MB/2; i < 2*ONE_MB; i++) {
+	    System.out.println("bye");
+	    
+	    for (int i = ONE_MB; i < 2*ONE_MB; i++) {
 		assertEquals(1, data[i]);
 	    }
 
