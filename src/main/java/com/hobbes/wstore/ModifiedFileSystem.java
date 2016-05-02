@@ -14,6 +14,10 @@ public class ModifiedFileSystem {
 
 	}
 
+	public FileSystem getRawFileSystem() {
+		return fs;
+	}
+
 	public static ModifiedFileSystem get() throws IOException {
 	    return new ModifiedFileSystem(FileSystemFactory.get(), FileChangesHandlerCoordinator.getInstance());
 	}

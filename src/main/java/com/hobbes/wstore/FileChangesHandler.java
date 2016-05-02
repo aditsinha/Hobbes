@@ -88,7 +88,7 @@ public class FileChangesHandler {
 	return (long) Math.max(byteChanges.getLastLogicalPosition(), blockChanges.getLastLogicalPosition());
     }
 
-    public void teardown() {
+    public void teardown() throws IOException {
 	byteChanges.teardown();
 	blockChanges.teardown();
     }

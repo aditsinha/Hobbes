@@ -236,7 +236,7 @@ class FileBlockChanges {
 
     }
 
-    public void teardown() {
+    public void teardown() throws IOException {
 	dataIn.close();
 	dataOut.close();
 	logOut.close();

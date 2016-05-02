@@ -30,7 +30,7 @@ public class FileByteChanges {
 		
 	}
 
-	public void teardown() {
+	public void teardown() throws IOException {
 		logOut.close();
 	}
 		
