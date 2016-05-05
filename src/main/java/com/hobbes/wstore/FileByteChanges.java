@@ -19,6 +19,7 @@ public class FileByteChanges {
 		FileStatus status = fileSystem.getFileStatus(dataFile);
 
 		this.blockSize = status.getBlockSize();
+
 		this.logOut = fileSystem.append(logFile);
 
 		FileByteChangesDeque d = new FileByteChangesDeque(dataFile);
@@ -45,6 +46,10 @@ public class FileByteChanges {
 
 	public long getLastLogicalPosition() {
 		ArrayList<ByteArrayDataRange> deque = d.getDeque();
+		if (deque.isEmpty()) {
+		    return 0;
+		}
+
 		return deque.get(deque.size()-1).getLogicalEndPosition();
 	}
 

@@ -3,6 +3,7 @@ import java.util.*;
 import java.io.*;
 
 import org.apache.hadoop.fs.*;
+import org.apache.hadoop.conf.*;
 
 public class ModifiedFileSystem {
 	private FileSystem fs;
@@ -21,6 +22,10 @@ public class ModifiedFileSystem {
 	public static ModifiedFileSystem get() throws IOException {
 	    return new ModifiedFileSystem(FileSystemFactory.get(), FileChangesHandlerCoordinator.getInstance());
 	}
+
+    public static ModifiedFileSystem get(Configuration conf) throws IOException {
+	return new ModifiedFileSystem(FileSystemFactory.get(conf), FileChangesHandlerCoordinator.getInstance());
+    }
 
 	public ModifiedOutputStream create(Path f, boolean overwrite, int bufferSize, short replication, long blockSize) throws IOException{
 	    fs.create(f, overwrite, bufferSize, replication, blockSize).close();
@@ -46,9 +51,29 @@ public class ModifiedFileSystem {
 		HashMap<String, Path> logPaths = getFilePaths(f);
 		Path blockChangesLogPath = logPaths.get("blockChangesLogPath");
 		Path byteChangesLogPath = logPaths.get("byteChangesLogPath");
+		if (!fs.exists(blockChangesLogPath)) {
+		    fs.create(blockChangesLogPath).close();
+		}
+
+		if (!fs.exists(byteChangesLogPath)) {
+		    fs.create(byteChangesLogPath).close();
+		}
+
 		FileChangesHandler handler = coordinator.get(f, blockChangesLogPath, byteChangesLogPath);
 		return new ModifiedInputStream(handler);
 	}
+
+    public long fileSize(Path f) throws IOException {
+	if (!fs.exists(f)) 
+	    return 0;
+
+	HashMap<String, Path> logPaths = getFilePaths(f);
+	FileChangesHandler handler = coordinator.get(f, logPaths.get("blockChangesLogPath"), logPaths.get("byteChangesLogPath"));
+
+	long ret = handler.getLastLogicalPosition();
+	coordinator.unget(handler);
+	return ret;
+    }
 
 	public void close() throws IOException {
 		fs.close();
@@ -73,5 +98,4 @@ public class ModifiedFileSystem {
 		hmap.put("byteChangesLogPath", byteChangesLogPath);
 		return hmap;
 	}
-
 }

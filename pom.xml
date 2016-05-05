@@ -16,7 +16,6 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.hadoop</groupId>
@@ -33,6 +32,27 @@
       <artifactId>hadoop-core</artifactId>
       <version>1.2.1</version>
     </dependency>
+	<dependency>
+	  <groupId>org.apache.hadoop</groupId>
+	  <artifactId>hadoop-hdfs-test</artifactId>
+	  <version>0.22.0</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.hadoop</groupId>
+		<artifactId>hadoop-mapreduce-client-jobclient</artifactId>
+		<version>2.7.1</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.hadoop</groupId>
+		<artifactId>hadoop-test</artifactId>
+		<version>1.2.1</version>
+	</dependency>
+	<dependency>
+	  <groupId>org.apache.hadoop</groupId>
+	  <artifactId>hadoop-mapreduce-client-jobclient</artifactId>
+	  <type>test-jar</type>
+	  <version>2.7.1</version>
+	</dependency>
   </dependencies>
 
   <build>

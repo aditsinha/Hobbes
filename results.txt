@@ -1,0 +1,1999 @@
+This script is Deprecated. Instead use stop-dfs.sh and stop-yarn.sh
+Stopping namenodes on [ec2-52-1-10-111.compute-1.amazonaws.com]
+ec2-52-1-10-111.compute-1.amazonaws.com: no namenode to stop
+ip-172-31-16-123: no datanode to stop
+ip-172-31-16-126: no datanode to stop
+ip-172-31-16-124: no datanode to stop
+Stopping secondary namenodes [0.0.0.0]
+0.0.0.0: no secondarynamenode to stop
+stopping yarn daemons
+no resourcemanager to stop
+ip-172-31-16-124: no nodemanager to stop
+ip-172-31-16-123: no nodemanager to stop
+ip-172-31-16-126: no nodemanager to stop
+no proxyserver to stop
+no historyserver to stop
+Starting namenodes on [ec2-52-1-10-111.compute-1.amazonaws.com]
+ec2-52-1-10-111.compute-1.amazonaws.com: starting namenode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-namenode-ip-172-31-16-125.out
+ip-172-31-16-126: starting datanode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-datanode-ip-172-31-16-126.out
+ip-172-31-16-124: starting datanode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-datanode-ip-172-31-16-124.out
+ip-172-31-16-123: starting datanode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-datanode-ip-172-31-16-123.out
+Starting secondary namenodes [0.0.0.0]
+0.0.0.0: starting secondarynamenode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-secondarynamenode-ip-172-31-16-125.out
+starting yarn daemons
+starting resourcemanager, logging to /usr/local/hadoop/logs/yarn-ubuntu-resourcemanager-ip-172-31-16-125.out
+ip-172-31-16-126: starting nodemanager, logging to /usr/local/hadoop/logs/yarn-ubuntu-nodemanager-ip-172-31-16-126.out
+ip-172-31-16-124: starting nodemanager, logging to /usr/local/hadoop/logs/yarn-ubuntu-nodemanager-ip-172-31-16-124.out
+ip-172-31-16-123: starting nodemanager, logging to /usr/local/hadoop/logs/yarn-ubuntu-nodemanager-ip-172-31-16-123.out
+starting historyserver, logging to /usr/local/hadoop/logs/mapred-ubuntu-historyserver-ip-172-31-16-125.out
+16/05/03 15:53:08 INFO fs.TestDFSIO: TestDFSIO.1.8
+16/05/03 15:53:08 INFO fs.TestDFSIO: nrFiles = 1
+16/05/03 15:53:08 INFO fs.TestDFSIO: nrBytes (MB) = 1.0
+16/05/03 15:53:08 INFO fs.TestDFSIO: bufferSize = 1000000
+16/05/03 15:53:08 INFO fs.TestDFSIO: baseDir = /benchmarks/TestDFSIO
+16/05/03 15:53:09 INFO fs.TestDFSIO: creating control file: 1048576 bytes, 1 files
+16/05/03 15:53:10 INFO fs.TestDFSIO: created control files for: 1 files
+16/05/03 15:53:10 INFO client.RMProxy: Connecting to ResourceManager at ec2-52-1-10-111.compute-1.amazonaws.com/172.31.16.125:8032
+16/05/03 15:53:11 INFO client.RMProxy: Connecting to ResourceManager at ec2-52-1-10-111.compute-1.amazonaws.com/172.31.16.125:8032
+16/05/03 15:53:11 INFO mapred.FileInputFormat: Total input paths to process : 1
+16/05/03 15:53:11 INFO mapreduce.JobSubmitter: number of splits:1
+16/05/03 15:53:11 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1462290771284_0001
+16/05/03 15:53:12 INFO impl.YarnClientImpl: Submitted application application_1462290771284_0001
+16/05/03 15:53:12 INFO mapreduce.Job: The url to track the job: http://ec2-52-1-10-111.compute-1.amazonaws.com:8088/proxy/application_1462290771284_0001/
+16/05/03 15:53:12 INFO mapreduce.Job: Running job: job_1462290771284_0001
+16/05/03 15:53:21 INFO mapreduce.Job: Job job_1462290771284_0001 running in uber mode : false
+16/05/03 15:53:21 INFO mapreduce.Job:  map 0% reduce 0%
+16/05/03 15:53:29 INFO mapreduce.Job:  map 100% reduce 0%
+16/05/03 15:53:37 INFO mapreduce.Job:  map 100% reduce 100%
+16/05/03 15:53:37 INFO mapreduce.Job: Job job_1462290771284_0001 completed successfully
+16/05/03 15:53:37 INFO mapreduce.Job: Counters: 49
+	File System Counters
+		FILE: Number of bytes read=87
+		FILE: Number of bytes written=232667
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=265
+		HDFS: Number of bytes written=1048647
+		HDFS: Number of read operations=7
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=3
+	Job Counters 
+		Launched map tasks=1
+		Launched reduce tasks=1
+		Data-local map tasks=1
+		Total time spent by all maps in occupied slots (ms)=5817
+		Total time spent by all reduces in occupied slots (ms)=4914
+		Total time spent by all map tasks (ms)=5817
+		Total time spent by all reduce tasks (ms)=4914
+		Total vcore-seconds taken by all map tasks=5817
+		Total vcore-seconds taken by all reduce tasks=4914
+		Total megabyte-seconds taken by all map tasks=5956608
+		Total megabyte-seconds taken by all reduce tasks=5031936
+	Map-Reduce Framework
+		Map input records=1
+		Map output records=5
+		Map output bytes=71
+		Map output materialized bytes=87
+		Input split bytes=153
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=5
+		Reduce shuffle bytes=87
+		Reduce input records=5
+		Reduce output records=5
+		Spilled Records=10
+		Shuffled Maps =1
+		Failed Shuffles=0
+		Merged Map outputs=1
+		GC time elapsed (ms)=154
+		CPU time spent (ms)=1250
+		Physical memory (bytes) snapshot=317730816
+		Virtual memory (bytes) snapshot=1596805120
+		Total committed heap usage (bytes)=136515584
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=112
+	File Output Format Counters 
+		Bytes Written=71
+16/05/03 15:53:37 WARN hdfs.DFSClient: DFSInputStream has been closed already
+16/05/03 15:53:37 INFO fs.TestDFSIO: ----- TestDFSIO ----- : write
+16/05/03 15:53:37 INFO fs.TestDFSIO:            Date & time: Tue May 03 15:53:37 UTC 2016
+16/05/03 15:53:37 INFO fs.TestDFSIO:        Number of files: 1
+16/05/03 15:53:37 INFO fs.TestDFSIO: Total MBytes processed: 1.0
+16/05/03 15:53:37 INFO fs.TestDFSIO:      Throughput mb/sec: 4.9504950495049505
+16/05/03 15:53:37 INFO fs.TestDFSIO: Average IO rate mb/sec: 4.95049524307251
+16/05/03 15:53:37 INFO fs.TestDFSIO:  IO rate std deviation: 8.553593410000855E-4
+16/05/03 15:53:37 INFO fs.TestDFSIO:     Test exec time sec: 26.997
+16/05/03 15:53:37 INFO fs.TestDFSIO: 
+This script is Deprecated. Instead use stop-dfs.sh and stop-yarn.sh
+Stopping namenodes on [ec2-52-1-10-111.compute-1.amazonaws.com]
+ec2-52-1-10-111.compute-1.amazonaws.com: stopping namenode
+ip-172-31-16-123: stopping datanode
+ip-172-31-16-126: stopping datanode
+ip-172-31-16-124: stopping datanode
+Stopping secondary namenodes [0.0.0.0]
+0.0.0.0: stopping secondarynamenode
+stopping yarn daemons
+stopping resourcemanager
+ip-172-31-16-126: stopping nodemanager
+ip-172-31-16-126: nodemanager did not stop gracefully after 5 seconds: killing with kill -9
+ip-172-31-16-124: stopping nodemanager
+ip-172-31-16-124: nodemanager did not stop gracefully after 5 seconds: killing with kill -9
+ip-172-31-16-123: stopping nodemanager
+no proxyserver to stop
+stopping historyserver
+Starting namenodes on [ec2-52-1-10-111.compute-1.amazonaws.com]
+ec2-52-1-10-111.compute-1.amazonaws.com: starting namenode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-namenode-ip-172-31-16-125.out
+ip-172-31-16-124: starting datanode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-datanode-ip-172-31-16-124.out
+ip-172-31-16-123: starting datanode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-datanode-ip-172-31-16-123.out
+ip-172-31-16-126: starting datanode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-datanode-ip-172-31-16-126.out
+Starting secondary namenodes [0.0.0.0]
+0.0.0.0: starting secondarynamenode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-secondarynamenode-ip-172-31-16-125.out
+starting yarn daemons
+starting resourcemanager, logging to /usr/local/hadoop/logs/yarn-ubuntu-resourcemanager-ip-172-31-16-125.out
+ip-172-31-16-126: starting nodemanager, logging to /usr/local/hadoop/logs/yarn-ubuntu-nodemanager-ip-172-31-16-126.out
+ip-172-31-16-124: starting nodemanager, logging to /usr/local/hadoop/logs/yarn-ubuntu-nodemanager-ip-172-31-16-124.out
+ip-172-31-16-123: starting nodemanager, logging to /usr/local/hadoop/logs/yarn-ubuntu-nodemanager-ip-172-31-16-123.out
+starting historyserver, logging to /usr/local/hadoop/logs/mapred-ubuntu-historyserver-ip-172-31-16-125.out
+16/05/03 15:54:59 INFO fs.TestDFSIO: TestDFSIO.1.8
+16/05/03 15:54:59 INFO fs.TestDFSIO: nrFiles = 2
+16/05/03 15:54:59 INFO fs.TestDFSIO: nrBytes (MB) = 1.0
+16/05/03 15:54:59 INFO fs.TestDFSIO: bufferSize = 1000000
+16/05/03 15:54:59 INFO fs.TestDFSIO: baseDir = /benchmarks/TestDFSIO
+16/05/03 15:55:01 INFO fs.TestDFSIO: creating control file: 1048576 bytes, 2 files
+16/05/03 15:55:02 INFO fs.TestDFSIO: created control files for: 2 files
+16/05/03 15:55:03 INFO client.RMProxy: Connecting to ResourceManager at ec2-52-1-10-111.compute-1.amazonaws.com/172.31.16.125:8032
+16/05/03 15:55:03 INFO client.RMProxy: Connecting to ResourceManager at ec2-52-1-10-111.compute-1.amazonaws.com/172.31.16.125:8032
+16/05/03 15:55:03 INFO mapred.FileInputFormat: Total input paths to process : 2
+16/05/03 15:55:03 INFO mapreduce.JobSubmitter: number of splits:2
+16/05/03 15:55:04 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1462290882103_0001
+16/05/03 15:55:04 INFO impl.YarnClientImpl: Submitted application application_1462290882103_0001
+16/05/03 15:55:04 INFO mapreduce.Job: The url to track the job: http://ec2-52-1-10-111.compute-1.amazonaws.com:8088/proxy/application_1462290882103_0001/
+16/05/03 15:55:04 INFO mapreduce.Job: Running job: job_1462290882103_0001
+16/05/03 15:55:12 INFO mapreduce.Job: Job job_1462290882103_0001 running in uber mode : false
+16/05/03 15:55:12 INFO mapreduce.Job:  map 0% reduce 0%
+16/05/03 15:55:27 INFO mapreduce.Job:  map 100% reduce 0%
+16/05/03 15:55:35 INFO mapreduce.Job:  map 100% reduce 100%
+16/05/03 15:55:36 INFO mapreduce.Job: Job job_1462290882103_0001 completed successfully
+16/05/03 15:55:36 INFO mapreduce.Job: Counters: 49
+	File System Counters
+		FILE: Number of bytes read=169
+		FILE: Number of bytes written=349111
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=530
+		HDFS: Number of bytes written=2097224
+		HDFS: Number of read operations=11
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=4
+	Job Counters 
+		Launched map tasks=2
+		Launched reduce tasks=1
+		Data-local map tasks=2
+		Total time spent by all maps in occupied slots (ms)=21967
+		Total time spent by all reduces in occupied slots (ms)=5889
+		Total time spent by all map tasks (ms)=21967
+		Total time spent by all reduce tasks (ms)=5889
+		Total vcore-seconds taken by all map tasks=21967
+		Total vcore-seconds taken by all reduce tasks=5889
+		Total megabyte-seconds taken by all map tasks=22494208
+		Total megabyte-seconds taken by all reduce tasks=6030336
+	Map-Reduce Framework
+		Map input records=2
+		Map output records=10
+		Map output bytes=143
+		Map output materialized bytes=175
+		Input split bytes=306
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=5
+		Reduce shuffle bytes=175
+		Reduce input records=10
+		Reduce output records=5
+		Spilled Records=20
+		Shuffled Maps =2
+		Failed Shuffles=0
+		Merged Map outputs=2
+		GC time elapsed (ms)=353
+		CPU time spent (ms)=1800
+		Physical memory (bytes) snapshot=525660160
+		Virtual memory (bytes) snapshot=2393673728
+		Total committed heap usage (bytes)=257236992
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=224
+	File Output Format Counters 
+		Bytes Written=72
+16/05/03 15:55:36 WARN hdfs.DFSClient: DFSInputStream has been closed already
+16/05/03 15:55:36 INFO fs.TestDFSIO: ----- TestDFSIO ----- : write
+16/05/03 15:55:36 INFO fs.TestDFSIO:            Date & time: Tue May 03 15:55:36 UTC 2016
+16/05/03 15:55:36 INFO fs.TestDFSIO:        Number of files: 2
+16/05/03 15:55:36 INFO fs.TestDFSIO: Total MBytes processed: 2.0
+16/05/03 15:55:36 INFO fs.TestDFSIO:      Throughput mb/sec: 2.932551319648094
+16/05/03 15:55:36 INFO fs.TestDFSIO: Average IO rate mb/sec: 3.002368688583374
+16/05/03 15:55:36 INFO fs.TestDFSIO:  IO rate std deviation: 0.457838722253713
+16/05/03 15:55:36 INFO fs.TestDFSIO:     Test exec time sec: 33.451
+16/05/03 15:55:36 INFO fs.TestDFSIO: 
+This script is Deprecated. Instead use stop-dfs.sh and stop-yarn.sh
+Stopping namenodes on [ec2-52-1-10-111.compute-1.amazonaws.com]
+ec2-52-1-10-111.compute-1.amazonaws.com: stopping namenode
+ip-172-31-16-124: stopping datanode
+ip-172-31-16-123: stopping datanode
+ip-172-31-16-126: stopping datanode
+Stopping secondary namenodes [0.0.0.0]
+0.0.0.0: stopping secondarynamenode
+stopping yarn daemons
+stopping resourcemanager
+ip-172-31-16-124: stopping nodemanager
+ip-172-31-16-124: nodemanager did not stop gracefully after 5 seconds: killing with kill -9
+ip-172-31-16-123: stopping nodemanager
+ip-172-31-16-123: nodemanager did not stop gracefully after 5 seconds: killing with kill -9
+ip-172-31-16-126: stopping nodemanager
+ip-172-31-16-126: nodemanager did not stop gracefully after 5 seconds: killing with kill -9
+no proxyserver to stop
+stopping historyserver
+Starting namenodes on [ec2-52-1-10-111.compute-1.amazonaws.com]
+ec2-52-1-10-111.compute-1.amazonaws.com: starting namenode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-namenode-ip-172-31-16-125.out
+ip-172-31-16-124: starting datanode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-datanode-ip-172-31-16-124.out
+ip-172-31-16-126: starting datanode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-datanode-ip-172-31-16-126.out
+ip-172-31-16-123: starting datanode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-datanode-ip-172-31-16-123.out
+Starting secondary namenodes [0.0.0.0]
+0.0.0.0: starting secondarynamenode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-secondarynamenode-ip-172-31-16-125.out
+starting yarn daemons
+starting resourcemanager, logging to /usr/local/hadoop/logs/yarn-ubuntu-resourcemanager-ip-172-31-16-125.out
+ip-172-31-16-124: starting nodemanager, logging to /usr/local/hadoop/logs/yarn-ubuntu-nodemanager-ip-172-31-16-124.out
+ip-172-31-16-126: starting nodemanager, logging to /usr/local/hadoop/logs/yarn-ubuntu-nodemanager-ip-172-31-16-126.out
+ip-172-31-16-123: starting nodemanager, logging to /usr/local/hadoop/logs/yarn-ubuntu-nodemanager-ip-172-31-16-123.out
+starting historyserver, logging to /usr/local/hadoop/logs/mapred-ubuntu-historyserver-ip-172-31-16-125.out
+16/05/03 15:56:58 INFO fs.TestDFSIO: TestDFSIO.1.8
+16/05/03 15:56:58 INFO fs.TestDFSIO: nrFiles = 4
+16/05/03 15:56:58 INFO fs.TestDFSIO: nrBytes (MB) = 1.0
+16/05/03 15:56:58 INFO fs.TestDFSIO: bufferSize = 1000000
+16/05/03 15:56:58 INFO fs.TestDFSIO: baseDir = /benchmarks/TestDFSIO
+16/05/03 15:56:59 INFO fs.TestDFSIO: creating control file: 1048576 bytes, 4 files
+16/05/03 15:57:00 INFO fs.TestDFSIO: created control files for: 4 files
+16/05/03 15:57:01 INFO client.RMProxy: Connecting to ResourceManager at ec2-52-1-10-111.compute-1.amazonaws.com/172.31.16.125:8032
+16/05/03 15:57:01 INFO client.RMProxy: Connecting to ResourceManager at ec2-52-1-10-111.compute-1.amazonaws.com/172.31.16.125:8032
+16/05/03 15:57:01 INFO mapred.FileInputFormat: Total input paths to process : 4
+16/05/03 15:57:01 INFO mapreduce.JobSubmitter: number of splits:4
+16/05/03 15:57:02 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1462291000720_0001
+16/05/03 15:57:02 INFO impl.YarnClientImpl: Submitted application application_1462291000720_0001
+16/05/03 15:57:02 INFO mapreduce.Job: The url to track the job: http://ec2-52-1-10-111.compute-1.amazonaws.com:8088/proxy/application_1462291000720_0001/
+16/05/03 15:57:02 INFO mapreduce.Job: Running job: job_1462291000720_0001
+16/05/03 15:57:12 INFO mapreduce.Job: Job job_1462291000720_0001 running in uber mode : false
+16/05/03 15:57:12 INFO mapreduce.Job:  map 0% reduce 0%
+16/05/03 15:57:35 INFO mapreduce.Job:  map 50% reduce 0%
+16/05/03 15:57:36 INFO mapreduce.Job:  map 100% reduce 0%
+16/05/03 15:57:43 INFO mapreduce.Job:  map 100% reduce 100%
+16/05/03 15:57:43 INFO mapreduce.Job: Job job_1462291000720_0001 completed successfully
+16/05/03 15:57:43 INFO mapreduce.Job: Counters: 49
+	File System Counters
+		FILE: Number of bytes read=331
+		FILE: Number of bytes written=581995
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=1060
+		HDFS: Number of bytes written=4194376
+		HDFS: Number of read operations=19
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=6
+	Job Counters 
+		Launched map tasks=4
+		Launched reduce tasks=1
+		Data-local map tasks=4
+		Total time spent by all maps in occupied slots (ms)=86333
+		Total time spent by all reduces in occupied slots (ms)=5060
+		Total time spent by all map tasks (ms)=86333
+		Total time spent by all reduce tasks (ms)=5060
+		Total vcore-seconds taken by all map tasks=86333
+		Total vcore-seconds taken by all reduce tasks=5060
+		Total megabyte-seconds taken by all map tasks=88404992
+		Total megabyte-seconds taken by all reduce tasks=5181440
+	Map-Reduce Framework
+		Map input records=4
+		Map output records=20
+		Map output bytes=285
+		Map output materialized bytes=349
+		Input split bytes=612
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=5
+		Reduce shuffle bytes=349
+		Reduce input records=20
+		Reduce output records=5
+		Spilled Records=40
+		Shuffled Maps =4
+		Failed Shuffles=0
+		Merged Map outputs=4
+		GC time elapsed (ms)=1200
+		CPU time spent (ms)=3130
+		Physical memory (bytes) snapshot=959156224
+		Virtual memory (bytes) snapshot=3987435520
+		Total committed heap usage (bytes)=498679808
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=448
+	File Output Format Counters 
+		Bytes Written=72
+16/05/03 15:57:43 WARN hdfs.DFSClient: DFSInputStream has been closed already
+16/05/03 15:57:43 INFO fs.TestDFSIO: ----- TestDFSIO ----- : write
+16/05/03 15:57:43 INFO fs.TestDFSIO:            Date & time: Tue May 03 15:57:43 UTC 2016
+16/05/03 15:57:43 INFO fs.TestDFSIO:        Number of files: 4
+16/05/03 15:57:43 INFO fs.TestDFSIO: Total MBytes processed: 4.0
+16/05/03 15:57:43 INFO fs.TestDFSIO:      Throughput mb/sec: 1.5378700499807767
+16/05/03 15:57:43 INFO fs.TestDFSIO: Average IO rate mb/sec: 1.740811824798584
+16/05/03 15:57:43 INFO fs.TestDFSIO:  IO rate std deviation: 0.5936295047974023
+16/05/03 15:57:43 INFO fs.TestDFSIO:     Test exec time sec: 42.602
+16/05/03 15:57:43 INFO fs.TestDFSIO: 
+This script is Deprecated. Instead use stop-dfs.sh and stop-yarn.sh
+Stopping namenodes on [ec2-52-1-10-111.compute-1.amazonaws.com]
+ec2-52-1-10-111.compute-1.amazonaws.com: stopping namenode
+ip-172-31-16-123: stopping datanode
+ip-172-31-16-124: stopping datanode
+ip-172-31-16-126: stopping datanode
+Stopping secondary namenodes [0.0.0.0]
+0.0.0.0: stopping secondarynamenode
+stopping yarn daemons
+stopping resourcemanager
+ip-172-31-16-123: stopping nodemanager
+ip-172-31-16-123: nodemanager did not stop gracefully after 5 seconds: killing with kill -9
+ip-172-31-16-124: stopping nodemanager
+ip-172-31-16-126: stopping nodemanager
+ip-172-31-16-126: nodemanager did not stop gracefully after 5 seconds: killing with kill -9
+no proxyserver to stop
+stopping historyserver
+Starting namenodes on [ec2-52-1-10-111.compute-1.amazonaws.com]
+ec2-52-1-10-111.compute-1.amazonaws.com: starting namenode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-namenode-ip-172-31-16-125.out
+ip-172-31-16-123: starting datanode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-datanode-ip-172-31-16-123.out
+ip-172-31-16-124: starting datanode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-datanode-ip-172-31-16-124.out
+ip-172-31-16-126: starting datanode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-datanode-ip-172-31-16-126.out
+Starting secondary namenodes [0.0.0.0]
+0.0.0.0: starting secondarynamenode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-secondarynamenode-ip-172-31-16-125.out
+starting yarn daemons
+starting resourcemanager, logging to /usr/local/hadoop/logs/yarn-ubuntu-resourcemanager-ip-172-31-16-125.out
+ip-172-31-16-124: starting nodemanager, logging to /usr/local/hadoop/logs/yarn-ubuntu-nodemanager-ip-172-31-16-124.out
+ip-172-31-16-126: starting nodemanager, logging to /usr/local/hadoop/logs/yarn-ubuntu-nodemanager-ip-172-31-16-126.out
+ip-172-31-16-123: starting nodemanager, logging to /usr/local/hadoop/logs/yarn-ubuntu-nodemanager-ip-172-31-16-123.out
+starting historyserver, logging to /usr/local/hadoop/logs/mapred-ubuntu-historyserver-ip-172-31-16-125.out
+16/05/03 15:59:04 INFO fs.TestDFSIO: TestDFSIO.1.8
+16/05/03 15:59:04 INFO fs.TestDFSIO: nrFiles = 16
+16/05/03 15:59:04 INFO fs.TestDFSIO: nrBytes (MB) = 1.0
+16/05/03 15:59:04 INFO fs.TestDFSIO: bufferSize = 1000000
+16/05/03 15:59:04 INFO fs.TestDFSIO: baseDir = /benchmarks/TestDFSIO
+16/05/03 15:59:06 INFO fs.TestDFSIO: creating control file: 1048576 bytes, 16 files
+16/05/03 15:59:07 INFO fs.TestDFSIO: created control files for: 16 files
+16/05/03 15:59:07 INFO client.RMProxy: Connecting to ResourceManager at ec2-52-1-10-111.compute-1.amazonaws.com/172.31.16.125:8032
+16/05/03 15:59:08 INFO client.RMProxy: Connecting to ResourceManager at ec2-52-1-10-111.compute-1.amazonaws.com/172.31.16.125:8032
+16/05/03 15:59:08 INFO mapred.FileInputFormat: Total input paths to process : 16
+16/05/03 15:59:08 INFO mapreduce.JobSubmitter: number of splits:16
+16/05/03 15:59:09 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1462291127568_0001
+16/05/03 15:59:09 INFO impl.YarnClientImpl: Submitted application application_1462291127568_0001
+16/05/03 15:59:09 INFO mapreduce.Job: The url to track the job: http://ec2-52-1-10-111.compute-1.amazonaws.com:8088/proxy/application_1462291127568_0001/
+16/05/03 15:59:09 INFO mapreduce.Job: Running job: job_1462291127568_0001
+16/05/03 15:59:18 INFO mapreduce.Job: Job job_1462291127568_0001 running in uber mode : false
+16/05/03 15:59:18 INFO mapreduce.Job:  map 0% reduce 0%
+16/05/03 15:59:56 INFO mapreduce.Job: Task Id : attempt_1462291127568_0001_m_000014_0, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291127568_0001_01_000016
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:00:03 INFO mapreduce.Job:  map 19% reduce 0%
+16/05/03 16:00:03 INFO mapreduce.Job: Task Id : attempt_1462291127568_0001_m_000003_0, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291127568_0001_01_000005
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:00:03 INFO mapreduce.Job: Task Id : attempt_1462291127568_0001_m_000004_0, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291127568_0001_01_000006
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:00:03 INFO mapreduce.Job: Task Id : attempt_1462291127568_0001_m_000005_0, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291127568_0001_01_000007
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:00:04 INFO mapreduce.Job: Task Id : attempt_1462291127568_0001_m_000008_0, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291127568_0001_01_000010
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:00:04 INFO mapreduce.Job: Task Id : attempt_1462291127568_0001_m_000012_0, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291127568_0001_01_000014
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:00:04 INFO mapreduce.Job: Task Id : attempt_1462291127568_0001_m_000006_0, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291127568_0001_01_000008
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:00:04 INFO mapreduce.Job: Task Id : attempt_1462291127568_0001_m_000002_0, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291127568_0001_01_000004
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:00:04 INFO mapreduce.Job: Task Id : attempt_1462291127568_0001_m_000009_0, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291127568_0001_01_000011
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:00:05 INFO mapreduce.Job:  map 38% reduce 0%
+16/05/03 16:00:05 INFO mapreduce.Job: Task Id : attempt_1462291127568_0001_m_000013_0, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291127568_0001_01_000015
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:00:15 INFO mapreduce.Job:  map 44% reduce 0%
+16/05/03 16:00:18 INFO mapreduce.Job:  map 50% reduce 0%
+16/05/03 16:00:19 INFO mapreduce.Job:  map 63% reduce 0%
+16/05/03 16:00:20 INFO mapreduce.Job:  map 69% reduce 0%
+16/05/03 16:00:21 INFO mapreduce.Job:  map 75% reduce 0%
+16/05/03 16:00:27 INFO mapreduce.Job:  map 88% reduce 0%
+16/05/03 16:00:30 INFO mapreduce.Job:  map 94% reduce 0%
+16/05/03 16:00:31 INFO mapreduce.Job:  map 100% reduce 0%
+16/05/03 16:00:32 INFO mapreduce.Job:  map 100% reduce 100%
+16/05/03 16:00:32 INFO mapreduce.Job: Job job_1462291127568_0001 completed successfully
+16/05/03 16:00:32 INFO mapreduce.Job: Counters: 51
+	File System Counters
+		FILE: Number of bytes read=1313
+		FILE: Number of bytes written=1979359
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=4252
+		HDFS: Number of bytes written=16777291
+		HDFS: Number of read operations=67
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=18
+	Job Counters 
+		Failed map tasks=10
+		Launched map tasks=26
+		Launched reduce tasks=1
+		Other local map tasks=10
+		Data-local map tasks=16
+		Total time spent by all maps in occupied slots (ms)=853044
+		Total time spent by all reduces in occupied slots (ms)=22691
+		Total time spent by all map tasks (ms)=853044
+		Total time spent by all reduce tasks (ms)=22691
+		Total vcore-seconds taken by all map tasks=853044
+		Total vcore-seconds taken by all reduce tasks=22691
+		Total megabyte-seconds taken by all map tasks=873517056
+		Total megabyte-seconds taken by all reduce tasks=23235584
+	Map-Reduce Framework
+		Map input records=16
+		Map output records=80
+		Map output bytes=1147
+		Map output materialized bytes=1403
+		Input split bytes=2454
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=5
+		Reduce shuffle bytes=1403
+		Reduce input records=80
+		Reduce output records=5
+		Spilled Records=160
+		Shuffled Maps =16
+		Failed Shuffles=0
+		Merged Map outputs=16
+		GC time elapsed (ms)=6150
+		CPU time spent (ms)=11030
+		Physical memory (bytes) snapshot=3451957248
+		Virtual memory (bytes) snapshot=13546438656
+		Total committed heap usage (bytes)=1947336704
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=1798
+	File Output Format Counters 
+		Bytes Written=75
+16/05/03 16:00:32 WARN hdfs.DFSClient: DFSInputStream has been closed already
+16/05/03 16:00:32 INFO fs.TestDFSIO: ----- TestDFSIO ----- : write
+16/05/03 16:00:32 INFO fs.TestDFSIO:            Date & time: Tue May 03 16:00:32 UTC 2016
+16/05/03 16:00:32 INFO fs.TestDFSIO:        Number of files: 16
+16/05/03 16:00:32 INFO fs.TestDFSIO: Total MBytes processed: 16.0
+16/05/03 16:00:32 INFO fs.TestDFSIO:      Throughput mb/sec: 1.3465746507322
+16/05/03 16:00:32 INFO fs.TestDFSIO: Average IO rate mb/sec: 1.903030514717102
+16/05/03 16:00:32 INFO fs.TestDFSIO:  IO rate std deviation: 1.1509503355644555
+16/05/03 16:00:32 INFO fs.TestDFSIO:     Test exec time sec: 84.606
+16/05/03 16:00:32 INFO fs.TestDFSIO: 
+This script is Deprecated. Instead use stop-dfs.sh and stop-yarn.sh
+Stopping namenodes on [ec2-52-1-10-111.compute-1.amazonaws.com]
+ec2-52-1-10-111.compute-1.amazonaws.com: stopping namenode
+ip-172-31-16-126: stopping datanode
+ip-172-31-16-124: stopping datanode
+ip-172-31-16-123: stopping datanode
+Stopping secondary namenodes [0.0.0.0]
+0.0.0.0: stopping secondarynamenode
+stopping yarn daemons
+stopping resourcemanager
+ip-172-31-16-124: stopping nodemanager
+ip-172-31-16-124: nodemanager did not stop gracefully after 5 seconds: killing with kill -9
+ip-172-31-16-123: stopping nodemanager
+ip-172-31-16-123: nodemanager did not stop gracefully after 5 seconds: killing with kill -9
+ip-172-31-16-126: stopping nodemanager
+ip-172-31-16-126: nodemanager did not stop gracefully after 5 seconds: killing with kill -9
+no proxyserver to stop
+stopping historyserver
+Starting namenodes on [ec2-52-1-10-111.compute-1.amazonaws.com]
+ec2-52-1-10-111.compute-1.amazonaws.com: starting namenode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-namenode-ip-172-31-16-125.out
+ip-172-31-16-124: starting datanode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-datanode-ip-172-31-16-124.out
+ip-172-31-16-123: starting datanode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-datanode-ip-172-31-16-123.out
+ip-172-31-16-126: starting datanode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-datanode-ip-172-31-16-126.out
+Starting secondary namenodes [0.0.0.0]
+0.0.0.0: starting secondarynamenode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-secondarynamenode-ip-172-31-16-125.out
+starting yarn daemons
+starting resourcemanager, logging to /usr/local/hadoop/logs/yarn-ubuntu-resourcemanager-ip-172-31-16-125.out
+ip-172-31-16-123: starting nodemanager, logging to /usr/local/hadoop/logs/yarn-ubuntu-nodemanager-ip-172-31-16-123.out
+ip-172-31-16-124: starting nodemanager, logging to /usr/local/hadoop/logs/yarn-ubuntu-nodemanager-ip-172-31-16-124.out
+ip-172-31-16-126: starting nodemanager, logging to /usr/local/hadoop/logs/yarn-ubuntu-nodemanager-ip-172-31-16-126.out
+starting historyserver, logging to /usr/local/hadoop/logs/mapred-ubuntu-historyserver-ip-172-31-16-125.out
+16/05/03 16:01:53 INFO fs.TestDFSIO: TestDFSIO.1.8
+16/05/03 16:01:53 INFO fs.TestDFSIO: nrFiles = 64
+16/05/03 16:01:53 INFO fs.TestDFSIO: nrBytes (MB) = 1.0
+16/05/03 16:01:53 INFO fs.TestDFSIO: bufferSize = 1000000
+16/05/03 16:01:53 INFO fs.TestDFSIO: baseDir = /benchmarks/TestDFSIO
+16/05/03 16:01:54 INFO fs.TestDFSIO: creating control file: 1048576 bytes, 64 files
+16/05/03 16:01:58 INFO fs.TestDFSIO: created control files for: 64 files
+16/05/03 16:01:58 INFO client.RMProxy: Connecting to ResourceManager at ec2-52-1-10-111.compute-1.amazonaws.com/172.31.16.125:8032
+16/05/03 16:01:58 INFO client.RMProxy: Connecting to ResourceManager at ec2-52-1-10-111.compute-1.amazonaws.com/172.31.16.125:8032
+16/05/03 16:01:58 INFO mapred.FileInputFormat: Total input paths to process : 64
+16/05/03 16:01:58 INFO mapreduce.JobSubmitter: number of splits:64
+16/05/03 16:01:59 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1462291296263_0001
+16/05/03 16:01:59 INFO impl.YarnClientImpl: Submitted application application_1462291296263_0001
+16/05/03 16:01:59 INFO mapreduce.Job: The url to track the job: http://ec2-52-1-10-111.compute-1.amazonaws.com:8088/proxy/application_1462291296263_0001/
+16/05/03 16:01:59 INFO mapreduce.Job: Running job: job_1462291296263_0001
+16/05/03 16:02:09 INFO mapreduce.Job: Job job_1462291296263_0001 running in uber mode : false
+16/05/03 16:02:09 INFO mapreduce.Job:  map 0% reduce 0%
+16/05/03 16:02:40 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000017_0, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_01_000019
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:02:42 INFO ipc.Client: Retrying connect to server: ip-172-31-16-126.ec2.internal/172.31.16.126:49316. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=3, sleepTime=1000 MILLISECONDS)
+16/05/03 16:02:43 INFO ipc.Client: Retrying connect to server: ip-172-31-16-126.ec2.internal/172.31.16.126:49316. Already tried 1 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=3, sleepTime=1000 MILLISECONDS)
+16/05/03 16:02:44 INFO ipc.Client: Retrying connect to server: ip-172-31-16-126.ec2.internal/172.31.16.126:49316. Already tried 2 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=3, sleepTime=1000 MILLISECONDS)
+16/05/03 16:03:22 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000000_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000002
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:03:23 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000003_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000005
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:03:24 INFO mapreduce.Job:  map 2% reduce 0%
+16/05/03 16:03:25 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000004_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000006
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:03:25 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000023_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000025
+Exit code: 2
+Exception message: /tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1462291296263_0001/container_1462291296263_0001_02_000025/default_container_executor.sh: xrealloc: .././subst.c:687: cannot allocate 256 bytes (57344 bytes allocated)
+
+Stack trace: ExitCodeException exitCode=2: /tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1462291296263_0001/container_1462291296263_0001_02_000025/default_container_executor.sh: xrealloc: .././subst.c:687: cannot allocate 256 bytes (57344 bytes allocated)
+
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 2
+Exception when trying to cleanup container container_1462291296263_0001_02_000025: java.io.IOException: Cannot run program "kill": error=12, Cannot allocate memory
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1047)
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:486)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.containerIsAlive(DefaultContainerExecutor.java:430)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.signalContainer(DefaultContainerExecutor.java:401)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.cleanupContainer(ContainerLaunch.java:419)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainersLauncher.handle(ContainersLauncher.java:139)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainersLauncher.handle(ContainersLauncher.java:55)
+	at org.apache.hadoop.yarn.event.AsyncDispatcher.dispatch(AsyncDispatcher.java:175)
+	at org.apache.hadoop.yarn.event.AsyncDispatcher$1.run(AsyncDispatcher.java:108)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.io.IOException: error=12, Cannot allocate memory
+	at java.lang.UNIXProcess.forkAndExec(Native Method)
+	at java.lang.UNIXProcess.<init>(UNIXProcess.java:187)
+	at java.lang.ProcessImpl.start(ProcessImpl.java:130)
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1028)
+	... 11 more
+
+
+16/05/03 16:03:25 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000005_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000007
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:03:25 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000022_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000024
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:03:26 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000010_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000012
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:03:26 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000007_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000009
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:03:26 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000006_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000008
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:03:30 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000014_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000016
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:03:31 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000015_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000017
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:03:31 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000012_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000014
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:03:31 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000013_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000015
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:03:31 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000019_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000021
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:03:32 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000017_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000019
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:03:32 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000016_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000018
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:03:33 INFO mapreduce.Job:  map 11% reduce 0%
+16/05/03 16:03:43 INFO mapreduce.Job:  map 13% reduce 0%
+16/05/03 16:03:55 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000000_1001, Status : FAILED
+Error: unable to create new native thread
+16/05/03 16:03:56 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000004_1001, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000032
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:03:56 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000003_1001, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000028
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:04:01 INFO mapreduce.Job:  map 16% reduce 0%
+16/05/03 16:04:06 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000026_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000031
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:04:06 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000024_1000, Status : FAILED
+Container killed on request. Exit code is 137
+Container exited with a non-zero exit code 137
+Killed by external signal
+
+16/05/03 16:04:09 INFO mapreduce.Job:  map 17% reduce 0%
+16/05/03 16:04:09 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000022_1001, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000035
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:04:11 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000026_1001, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000056
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:04:12 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000006_1001, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000038
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:04:12 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000014_1001, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000039
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:04:13 INFO mapreduce.Job:  map 22% reduce 0%
+16/05/03 16:04:13 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000007_1001, Status : FAILED
+Container killed on request. Exit code is 137
+Container exited with a non-zero exit code 137
+Killed by external signal
+
+16/05/03 16:04:13 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000019_1001, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000043
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:04:14 INFO mapreduce.Job:  map 23% reduce 0%
+16/05/03 16:04:15 INFO mapreduce.Job:  map 27% reduce 0%
+16/05/03 16:04:17 INFO mapreduce.Job:  map 28% reduce 0%
+16/05/03 16:04:18 INFO mapreduce.Job:  map 30% reduce 0%
+16/05/03 16:04:19 INFO mapreduce.Job:  map 30% reduce 10%
+16/05/03 16:04:27 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000030_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000051
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:04:27 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000000_1002, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000049
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:04:28 INFO mapreduce.Job:  map 31% reduce 10%
+16/05/03 16:04:32 INFO mapreduce.Job:  map 33% reduce 10%
+16/05/03 16:04:34 INFO mapreduce.Job:  map 34% reduce 10%
+16/05/03 16:04:35 INFO mapreduce.Job:  map 34% reduce 11%
+16/05/03 16:04:45 INFO mapreduce.Job:  map 36% reduce 11%
+16/05/03 16:04:45 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000037_1000, Status : FAILED
+Error: unable to create new native thread
+16/05/03 16:04:45 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000024_1001, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000057
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:04:46 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000022_1002, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000058
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:04:47 INFO mapreduce.Job:  map 39% reduce 12%
+16/05/03 16:04:47 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000033_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000059
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:04:49 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000026_1002, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000061
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:04:50 INFO mapreduce.Job:  map 41% reduce 13%
+16/05/03 16:04:50 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000038_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000069
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:04:51 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000036_1000, Status : FAILED
+Error: unable to create new native thread
+16/05/03 16:04:52 INFO mapreduce.Job:  map 42% reduce 13%
+16/05/03 16:04:53 INFO mapreduce.Job:  map 44% reduce 13%
+16/05/03 16:04:53 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000019_1002, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000067
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:04:54 INFO mapreduce.Job:  map 45% reduce 15%
+16/05/03 16:04:56 INFO mapreduce.Job:  map 47% reduce 15%
+16/05/03 16:04:57 INFO mapreduce.Job:  map 47% reduce 16%
+16/05/03 16:04:57 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000040_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000071
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:04:59 INFO mapreduce.Job:  map 48% reduce 16%
+16/05/03 16:04:59 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000030_1001, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000073
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:05:06 INFO mapreduce.Job:  map 50% reduce 16%
+16/05/03 16:05:06 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000042_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000075
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:05:09 INFO mapreduce.Job:  map 50% reduce 17%
+16/05/03 16:05:19 INFO mapreduce.Job:  map 52% reduce 17%
+16/05/03 16:05:21 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000037_1001, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000077
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:05:23 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000024_1002, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000079
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:05:25 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000043_1000, Status : FAILED
+Error: unable to create new native thread
+16/05/03 16:05:26 INFO mapreduce.Job:  map 53% reduce 17%
+16/05/03 16:05:26 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000033_1001, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000081
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:05:27 INFO mapreduce.Job: Task Id : attempt_1462291296263_0001_m_000047_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291296263_0001_02_000084
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:05:28 INFO mapreduce.Job:  map 56% reduce 18%
+16/05/03 16:05:29 INFO mapreduce.Job:  map 100% reduce 100%
+16/05/03 16:05:29 INFO mapred.ClientServiceDelegate: Application state is completed. FinalApplicationStatus=FAILED. Redirecting to job history server
+16/05/03 16:05:29 INFO mapred.ClientServiceDelegate: Application state is completed. FinalApplicationStatus=FAILED. Redirecting to job history server
+16/05/03 16:05:29 INFO mapred.ClientServiceDelegate: Application state is completed. FinalApplicationStatus=FAILED. Redirecting to job history server
+java.io.IOException: java.io.IOException: Unknown Job job_1462291296263_0001
+	at org.apache.hadoop.mapreduce.v2.hs.HistoryClientService$HSClientProtocolHandler.verifyAndGetJob(HistoryClientService.java:218)
+	at org.apache.hadoop.mapreduce.v2.hs.HistoryClientService$HSClientProtocolHandler.getTaskAttemptCompletionEvents(HistoryClientService.java:281)
+	at org.apache.hadoop.mapreduce.v2.api.impl.pb.service.MRClientProtocolPBServiceImpl.getTaskAttemptCompletionEvents(MRClientProtocolPBServiceImpl.java:173)
+	at org.apache.hadoop.yarn.proto.MRClientProtocol$MRClientProtocolService$2.callBlockingMethod(MRClientProtocol.java:283)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:616)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:969)
+	at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2049)
+	at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2045)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:415)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1657)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2043)
+
+	at org.apache.hadoop.mapred.ClientServiceDelegate.invoke(ClientServiceDelegate.java:343)
+	at org.apache.hadoop.mapred.ClientServiceDelegate.getTaskCompletionEvents(ClientServiceDelegate.java:395)
+	at org.apache.hadoop.mapred.YARNRunner.getTaskCompletionEvents(YARNRunner.java:575)
+	at org.apache.hadoop.mapreduce.Job$5.run(Job.java:673)
+	at org.apache.hadoop.mapreduce.Job$5.run(Job.java:670)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:415)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1657)
+	at org.apache.hadoop.mapreduce.Job.getTaskCompletionEvents(Job.java:670)
+	at org.apache.hadoop.mapreduce.Job.monitorAndPrintJob(Job.java:1371)
+	at org.apache.hadoop.mapred.JobClient$NetworkedJob.monitorAndPrintJob(JobClient.java:412)
+	at org.apache.hadoop.mapred.JobClient.monitorAndPrintJob(JobClient.java:884)
+	at org.apache.hadoop.mapred.JobClient.runJob(JobClient.java:864)
+	at org.apache.hadoop.fs.TestDFSIO.runIOTest(TestDFSIO.java:457)
+	at org.apache.hadoop.fs.TestDFSIO.writeTest(TestDFSIO.java:439)
+	at org.apache.hadoop.fs.TestDFSIO.run(TestDFSIO.java:819)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:70)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:84)
+	at org.apache.hadoop.fs.TestDFSIO.main(TestDFSIO.java:712)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.hadoop.util.ProgramDriver$ProgramDescription.invoke(ProgramDriver.java:71)
+	at org.apache.hadoop.util.ProgramDriver.run(ProgramDriver.java:144)
+	at org.apache.hadoop.test.MapredTestDriver.run(MapredTestDriver.java:130)
+	at org.apache.hadoop.test.MapredTestDriver.main(MapredTestDriver.java:138)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:221)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:136)
+Caused by: java.io.IOException: Unknown Job job_1462291296263_0001
+	at org.apache.hadoop.mapreduce.v2.hs.HistoryClientService$HSClientProtocolHandler.verifyAndGetJob(HistoryClientService.java:218)
+	at org.apache.hadoop.mapreduce.v2.hs.HistoryClientService$HSClientProtocolHandler.getTaskAttemptCompletionEvents(HistoryClientService.java:281)
+	at org.apache.hadoop.mapreduce.v2.api.impl.pb.service.MRClientProtocolPBServiceImpl.getTaskAttemptCompletionEvents(MRClientProtocolPBServiceImpl.java:173)
+	at org.apache.hadoop.yarn.proto.MRClientProtocol$MRClientProtocolService$2.callBlockingMethod(MRClientProtocol.java:283)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:616)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:969)
+	at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2049)
+	at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2045)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:415)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1657)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2043)
+
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at org.apache.hadoop.ipc.RemoteException.instantiateException(RemoteException.java:106)
+	at org.apache.hadoop.ipc.RemoteException.unwrapRemoteException(RemoteException.java:95)
+	at org.apache.hadoop.mapreduce.v2.api.impl.pb.client.MRClientProtocolPBClientImpl.unwrapAndThrowException(MRClientProtocolPBClientImpl.java:291)
+	at org.apache.hadoop.mapreduce.v2.api.impl.pb.client.MRClientProtocolPBClientImpl.getTaskAttemptCompletionEvents(MRClientProtocolPBClientImpl.java:179)
+	at sun.reflect.GeneratedMethodAccessor7.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.hadoop.mapred.ClientServiceDelegate.invoke(ClientServiceDelegate.java:324)
+	... 32 more
+Caused by: org.apache.hadoop.ipc.RemoteException(java.io.IOException): Unknown Job job_1462291296263_0001
+	at org.apache.hadoop.mapreduce.v2.hs.HistoryClientService$HSClientProtocolHandler.verifyAndGetJob(HistoryClientService.java:218)
+	at org.apache.hadoop.mapreduce.v2.hs.HistoryClientService$HSClientProtocolHandler.getTaskAttemptCompletionEvents(HistoryClientService.java:281)
+	at org.apache.hadoop.mapreduce.v2.api.impl.pb.service.MRClientProtocolPBServiceImpl.getTaskAttemptCompletionEvents(MRClientProtocolPBServiceImpl.java:173)
+	at org.apache.hadoop.yarn.proto.MRClientProtocol$MRClientProtocolService$2.callBlockingMethod(MRClientProtocol.java:283)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:616)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:969)
+	at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2049)
+	at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2045)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:415)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1657)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2043)
+
+	at org.apache.hadoop.ipc.Client.call(Client.java:1476)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1407)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:229)
+	at com.sun.proxy.$Proxy14.getTaskAttemptCompletionEvents(Unknown Source)
+	at org.apache.hadoop.mapreduce.v2.api.impl.pb.client.MRClientProtocolPBClientImpl.getTaskAttemptCompletionEvents(MRClientProtocolPBClientImpl.java:177)
+	... 36 more
+This script is Deprecated. Instead use stop-dfs.sh and stop-yarn.sh
+Stopping namenodes on [ec2-52-1-10-111.compute-1.amazonaws.com]
+ec2-52-1-10-111.compute-1.amazonaws.com: stopping namenode
+ip-172-31-16-124: no datanode to stop
+ip-172-31-16-126: stopping datanode
+ip-172-31-16-123: stopping datanode
+Stopping secondary namenodes [0.0.0.0]
+0.0.0.0: stopping secondarynamenode
+stopping yarn daemons
+stopping resourcemanager
+ip-172-31-16-124: stopping nodemanager
+ip-172-31-16-124: nodemanager did not stop gracefully after 5 seconds: killing with kill -9
+ip-172-31-16-123: stopping nodemanager
+ip-172-31-16-123: nodemanager did not stop gracefully after 5 seconds: killing with kill -9
+ip-172-31-16-126: stopping nodemanager
+ip-172-31-16-126: nodemanager did not stop gracefully after 5 seconds: killing with kill -9
+no proxyserver to stop
+stopping historyserver
+Starting namenodes on [ec2-52-1-10-111.compute-1.amazonaws.com]
+ec2-52-1-10-111.compute-1.amazonaws.com: starting namenode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-namenode-ip-172-31-16-125.out
+ip-172-31-16-124: starting datanode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-datanode-ip-172-31-16-124.out
+ip-172-31-16-126: starting datanode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-datanode-ip-172-31-16-126.out
+ip-172-31-16-123: starting datanode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-datanode-ip-172-31-16-123.out
+Starting secondary namenodes [0.0.0.0]
+0.0.0.0: starting secondarynamenode, logging to /usr/local/hadoop/logs/hadoop-ubuntu-secondarynamenode-ip-172-31-16-125.out
+starting yarn daemons
+starting resourcemanager, logging to /usr/local/hadoop/logs/yarn-ubuntu-resourcemanager-ip-172-31-16-125.out
+ip-172-31-16-126: starting nodemanager, logging to /usr/local/hadoop/logs/yarn-ubuntu-nodemanager-ip-172-31-16-126.out
+ip-172-31-16-124: starting nodemanager, logging to /usr/local/hadoop/logs/yarn-ubuntu-nodemanager-ip-172-31-16-124.out
+ip-172-31-16-123: starting nodemanager, logging to /usr/local/hadoop/logs/yarn-ubuntu-nodemanager-ip-172-31-16-123.out
+starting historyserver, logging to /usr/local/hadoop/logs/mapred-ubuntu-historyserver-ip-172-31-16-125.out
+16/05/03 16:06:52 INFO fs.TestDFSIO: TestDFSIO.1.8
+16/05/03 16:06:52 INFO fs.TestDFSIO: nrFiles = 256
+16/05/03 16:06:52 INFO fs.TestDFSIO: nrBytes (MB) = 1.0
+16/05/03 16:06:52 INFO fs.TestDFSIO: bufferSize = 1000000
+16/05/03 16:06:52 INFO fs.TestDFSIO: baseDir = /benchmarks/TestDFSIO
+16/05/03 16:06:53 INFO fs.TestDFSIO: creating control file: 1048576 bytes, 256 files
+16/05/03 16:07:02 INFO fs.TestDFSIO: created control files for: 256 files
+16/05/03 16:07:02 INFO client.RMProxy: Connecting to ResourceManager at ec2-52-1-10-111.compute-1.amazonaws.com/172.31.16.125:8032
+16/05/03 16:07:02 INFO client.RMProxy: Connecting to ResourceManager at ec2-52-1-10-111.compute-1.amazonaws.com/172.31.16.125:8032
+16/05/03 16:07:03 INFO mapred.FileInputFormat: Total input paths to process : 256
+16/05/03 16:07:03 INFO mapreduce.JobSubmitter: number of splits:256
+16/05/03 16:07:04 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1462291595163_0001
+16/05/03 16:07:04 INFO impl.YarnClientImpl: Submitted application application_1462291595163_0001
+16/05/03 16:07:04 INFO mapreduce.Job: The url to track the job: http://ec2-52-1-10-111.compute-1.amazonaws.com:8088/proxy/application_1462291595163_0001/
+16/05/03 16:07:04 INFO mapreduce.Job: Running job: job_1462291595163_0001
+16/05/03 16:07:13 INFO mapreduce.Job: Job job_1462291595163_0001 running in uber mode : false
+16/05/03 16:07:13 INFO mapreduce.Job:  map 0% reduce 0%
+16/05/03 16:07:47 INFO ipc.Client: Retrying connect to server: ip-172-31-16-126.ec2.internal/172.31.16.126:36289. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=3, sleepTime=1000 MILLISECONDS)
+16/05/03 16:07:48 INFO ipc.Client: Retrying connect to server: ip-172-31-16-126.ec2.internal/172.31.16.126:36289. Already tried 1 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=3, sleepTime=1000 MILLISECONDS)
+16/05/03 16:07:49 INFO ipc.Client: Retrying connect to server: ip-172-31-16-126.ec2.internal/172.31.16.126:36289. Already tried 2 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=3, sleepTime=1000 MILLISECONDS)
+16/05/03 16:08:27 INFO mapreduce.Job:  map 2% reduce 0%
+16/05/03 16:08:27 INFO mapreduce.Job: Task Id : attempt_1462291595163_0001_m_000000_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291595163_0001_02_000002
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:08:27 INFO mapreduce.Job: Task Id : attempt_1462291595163_0001_m_000005_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291595163_0001_02_000007
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:08:27 INFO mapreduce.Job: Task Id : attempt_1462291595163_0001_m_000001_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291595163_0001_02_000003
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:08:28 INFO mapreduce.Job:  map 1% reduce 0%
+16/05/03 16:08:32 INFO mapreduce.Job:  map 2% reduce 0%
+16/05/03 16:08:32 INFO mapreduce.Job: Task Id : attempt_1462291595163_0001_m_000014_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291595163_0001_02_000016
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:08:32 INFO mapreduce.Job: Task Id : attempt_1462291595163_0001_m_000021_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291595163_0001_02_000023
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:08:32 INFO mapreduce.Job: Task Id : attempt_1462291595163_0001_m_000018_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291595163_0001_02_000020
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:08:32 INFO mapreduce.Job: Task Id : attempt_1462291595163_0001_m_000016_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291595163_0001_02_000018
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:08:33 INFO mapreduce.Job:  map 1% reduce 0%
+16/05/03 16:08:34 INFO mapreduce.Job: Task Id : attempt_1462291595163_0001_m_000008_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291595163_0001_02_000010
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:08:35 INFO mapreduce.Job: Task Id : attempt_1462291595163_0001_m_000017_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291595163_0001_02_000019
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:08:37 INFO mapreduce.Job: Task Id : attempt_1462291595163_0001_m_000010_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291595163_0001_02_000012
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:08:38 INFO mapreduce.Job: Task Id : attempt_1462291595163_0001_m_000012_1000, Status : FAILED
+Error: java.io.IOException: DataStreamer Exception: 
+	at org.apache.hadoop.hdfs.DFSOutputStream$DataStreamer.run(DFSOutputStream.java:563)
+Caused by: java.lang.OutOfMemoryError: unable to create new native thread
+	at java.lang.Thread.start0(Native Method)
+	at java.lang.Thread.start(Thread.java:714)
+	at org.apache.hadoop.hdfs.DFSOutputStream$DataStreamer.initDataStreaming(DFSOutputStream.java:362)
+	at org.apache.hadoop.hdfs.DFSOutputStream$DataStreamer.run(DFSOutputStream.java:450)
+
+16/05/03 16:08:38 INFO mapreduce.Job: Task Id : attempt_1462291595163_0001_m_000015_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291595163_0001_02_000017
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:08:39 INFO mapreduce.Job: Task Id : attempt_1462291595163_0001_m_000007_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291595163_0001_02_000009
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:08:39 INFO mapreduce.Job: Task Id : attempt_1462291595163_0001_m_000009_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291595163_0001_02_000011
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:08:39 INFO mapreduce.Job: Task Id : attempt_1462291595163_0001_m_000006_1000, Status : FAILED
+Container killed on request. Exit code is 137
+Container exited with a non-zero exit code 137
+Killed by external signal
+
+16/05/03 16:08:39 INFO mapreduce.Job: Task Id : attempt_1462291595163_0001_m_000019_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291595163_0001_02_000021
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:08:40 INFO mapreduce.Job: Task Id : attempt_1462291595163_0001_m_000020_1000, Status : FAILED
+Exception from container-launch.
+Container id: container_1462291595163_0001_02_000022
+Exit code: 1
+Stack trace: ExitCodeException exitCode=1: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:545)
+	at org.apache.hadoop.util.Shell.run(Shell.java:456)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:722)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:211)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:302)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:82)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+Container exited with a non-zero exit code 1
+
+16/05/03 16:08:41 INFO mapreduce.Job:  map 2% reduce 0%
